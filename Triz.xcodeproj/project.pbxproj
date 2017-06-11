@@ -7,39 +7,154 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C9FDAF7E0D061FA81B4E30E /* Pods_Triz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBFB0782D9A8E5AE90C03E74 /* Pods_Triz.framework */; };
+		A51BC6191EBDFA360029EA8D /* scheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51BC6181EBDFA360029EA8D /* scheduleViewController.swift */; };
+		A51BC61B1EBE006C0029EA8D /* scheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51BC61A1EBE006C0029EA8D /* scheduleTableViewController.swift */; };
+		A51BC61D1EBE04670029EA8D /* MatterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51BC61C1EBE04670029EA8D /* MatterTableViewCell.swift */; };
+		A51BC6231EBE16930029EA8D /* CustomHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51BC6221EBE16930029EA8D /* CustomHeaderCell.swift */; };
+		A53E2D5B1E8FC68B002CA39D /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53E2D5A1E8FC68B002CA39D /* ForgotPasswordViewController.swift */; };
+		A550258E1EA23F710058908C /* ExploreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A550258D1EA23F710058908C /* ExploreCollectionViewCell.swift */; };
+		A55025901EA254C00058908C /* ExploreHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A550258F1EA254C00058908C /* ExploreHeaderCollectionViewCell.swift */; };
+		A55025921EA25D5A0058908C /* ExploreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55025911EA25D5A0058908C /* ExploreDetailViewController.swift */; };
+		A573A30F1ED9A901003E2DC0 /* SpeakerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573A30E1ED9A901003E2DC0 /* SpeakerCollectionViewCell.swift */; };
+		A573A3111ED9B984003E2DC0 /* SpeakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A573A3101ED9B984003E2DC0 /* SpeakerViewController.swift */; };
+		A5A88D361EE2FBCC00E43707 /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A88D351EE2FBCC00E43707 /* SideBarViewController.swift */; };
+		A5A88D381EE2FD2F00E43707 /* SideBarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A88D371EE2FD2F00E43707 /* SideBarTableViewCell.swift */; };
+		A5C389A61EE857CD0005AE16 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C389A51EE857CD0005AE16 /* NotificationCenter.framework */; };
+		A5C389A91EE857CD0005AE16 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C389A81EE857CD0005AE16 /* TodayViewController.swift */; };
+		A5C389AC1EE857CD0005AE16 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C389AA1EE857CD0005AE16 /* MainInterface.storyboard */; };
+		A5C389B01EE857CD0005AE16 /* Triz Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A5C389A41EE857CD0005AE16 /* Triz Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A5C389B81EE85BD20005AE16 /* WidgetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C389B71EE85BD20005AE16 /* WidgetCollectionViewCell.swift */; };
+		A5C389B91EE861EF0005AE16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5F70E441E8590C1008D1C63 /* Assets.xcassets */; };
 		A5F70E3E1E8590C1008D1C63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F70E3D1E8590C1008D1C63 /* AppDelegate.swift */; };
-		A5F70E401E8590C1008D1C63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F70E3F1E8590C1008D1C63 /* ViewController.swift */; };
+		A5F70E401E8590C1008D1C63 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F70E3F1E8590C1008D1C63 /* LoginViewController.swift */; };
 		A5F70E431E8590C1008D1C63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5F70E411E8590C1008D1C63 /* Main.storyboard */; };
 		A5F70E451E8590C1008D1C63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5F70E441E8590C1008D1C63 /* Assets.xcassets */; };
 		A5F70E481E8590C1008D1C63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5F70E461E8590C1008D1C63 /* LaunchScreen.storyboard */; };
+		A5F70E501E8590F7008D1C63 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F70E4F1E8590F7008D1C63 /* SignUpViewController.swift */; };
+		A5F70E521E859768008D1C63 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F70E511E859768008D1C63 /* SplashViewController.swift */; };
+		A5F70E541E8597CB008D1C63 /* WalkThroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F70E531E8597CB008D1C63 /* WalkThroughViewController.swift */; };
+		A5F70E561E859870008D1C63 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F70E551E859870008D1C63 /* FirstViewController.swift */; };
+		A5F70E581E859C3F008D1C63 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F70E571E859C3F008D1C63 /* ExploreViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A5C389AE1EE857CD0005AE16 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5F70E321E8590BE008D1C63 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5C389A31EE857CD0005AE16;
+			remoteInfo = "Triz Widget";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A5C389B41EE857CD0005AE16 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A5C389B01EE857CD0005AE16 /* Triz Widget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		05CB4B5E59C418E0248C051C /* Pods-Triz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Triz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Triz/Pods-Triz.debug.xcconfig"; sourceTree = "<group>"; };
+		6131E6053296CEDB2E9CBE69 /* Pods-Triz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Triz.release.xcconfig"; path = "Pods/Target Support Files/Pods-Triz/Pods-Triz.release.xcconfig"; sourceTree = "<group>"; };
+		A51BC6181EBDFA360029EA8D /* scheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = scheduleViewController.swift; sourceTree = "<group>"; };
+		A51BC61A1EBE006C0029EA8D /* scheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = scheduleTableViewController.swift; sourceTree = "<group>"; };
+		A51BC61C1EBE04670029EA8D /* MatterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatterTableViewCell.swift; sourceTree = "<group>"; };
+		A51BC6221EBE16930029EA8D /* CustomHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomHeaderCell.swift; sourceTree = "<group>"; };
+		A53E2D5A1E8FC68B002CA39D /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		A550258D1EA23F710058908C /* ExploreCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreCollectionViewCell.swift; sourceTree = "<group>"; };
+		A550258F1EA254C00058908C /* ExploreHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
+		A55025911EA25D5A0058908C /* ExploreDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreDetailViewController.swift; sourceTree = "<group>"; };
+		A573A30E1ED9A901003E2DC0 /* SpeakerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCollectionViewCell.swift; sourceTree = "<group>"; };
+		A573A3101ED9B984003E2DC0 /* SpeakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerViewController.swift; sourceTree = "<group>"; };
+		A5A88D351EE2FBCC00E43707 /* SideBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
+		A5A88D371EE2FD2F00E43707 /* SideBarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarTableViewCell.swift; sourceTree = "<group>"; };
+		A5C389A41EE857CD0005AE16 /* Triz Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Triz Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5C389A51EE857CD0005AE16 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		A5C389A81EE857CD0005AE16 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		A5C389AB1EE857CD0005AE16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		A5C389AD1EE857CD0005AE16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5C389B71EE85BD20005AE16 /* WidgetCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5F70E3A1E8590BF008D1C63 /* Triz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Triz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5F70E3D1E8590C1008D1C63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A5F70E3F1E8590C1008D1C63 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A5F70E3F1E8590C1008D1C63 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A5F70E421E8590C1008D1C63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A5F70E441E8590C1008D1C63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5F70E471E8590C1008D1C63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5F70E491E8590C1008D1C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5F70E4F1E8590F7008D1C63 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		A5F70E511E859768008D1C63 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		A5F70E531E8597CB008D1C63 /* WalkThroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkThroughViewController.swift; sourceTree = "<group>"; };
+		A5F70E551E859870008D1C63 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		A5F70E571E859C3F008D1C63 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		EBFB0782D9A8E5AE90C03E74 /* Pods_Triz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Triz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A5C389A11EE857CD0005AE16 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C389A61EE857CD0005AE16 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A5F70E371E8590BF008D1C63 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C9FDAF7E0D061FA81B4E30E /* Pods_Triz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3CB396A9D6AC41391C625456 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				05CB4B5E59C418E0248C051C /* Pods-Triz.debug.xcconfig */,
+				6131E6053296CEDB2E9CBE69 /* Pods-Triz.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9B2B7C9744446FA59ACE6B64 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EBFB0782D9A8E5AE90C03E74 /* Pods_Triz.framework */,
+				A5C389A51EE857CD0005AE16 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A5C389A71EE857CD0005AE16 /* Triz Widget */ = {
+			isa = PBXGroup;
+			children = (
+				A5C389A81EE857CD0005AE16 /* TodayViewController.swift */,
+				A5C389AA1EE857CD0005AE16 /* MainInterface.storyboard */,
+				A5C389AD1EE857CD0005AE16 /* Info.plist */,
+				A5C389B71EE85BD20005AE16 /* WidgetCollectionViewCell.swift */,
+			);
+			path = "Triz Widget";
+			sourceTree = "<group>";
+		};
 		A5F70E311E8590BE008D1C63 = {
 			isa = PBXGroup;
 			children = (
 				A5F70E3C1E8590BF008D1C63 /* Triz */,
+				A5C389A71EE857CD0005AE16 /* Triz Widget */,
 				A5F70E3B1E8590BF008D1C63 /* Products */,
+				3CB396A9D6AC41391C625456 /* Pods */,
+				9B2B7C9744446FA59ACE6B64 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -47,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				A5F70E3A1E8590BF008D1C63 /* Triz.app */,
+				A5C389A41EE857CD0005AE16 /* Triz Widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -55,11 +171,28 @@
 			isa = PBXGroup;
 			children = (
 				A5F70E3D1E8590C1008D1C63 /* AppDelegate.swift */,
-				A5F70E3F1E8590C1008D1C63 /* ViewController.swift */,
+				A5F70E3F1E8590C1008D1C63 /* LoginViewController.swift */,
+				A5F70E4F1E8590F7008D1C63 /* SignUpViewController.swift */,
 				A5F70E411E8590C1008D1C63 /* Main.storyboard */,
 				A5F70E441E8590C1008D1C63 /* Assets.xcassets */,
 				A5F70E461E8590C1008D1C63 /* LaunchScreen.storyboard */,
 				A5F70E491E8590C1008D1C63 /* Info.plist */,
+				A5F70E551E859870008D1C63 /* FirstViewController.swift */,
+				A5F70E511E859768008D1C63 /* SplashViewController.swift */,
+				A5F70E531E8597CB008D1C63 /* WalkThroughViewController.swift */,
+				A51BC61C1EBE04670029EA8D /* MatterTableViewCell.swift */,
+				A51BC6221EBE16930029EA8D /* CustomHeaderCell.swift */,
+				A5F70E571E859C3F008D1C63 /* ExploreViewController.swift */,
+				A550258D1EA23F710058908C /* ExploreCollectionViewCell.swift */,
+				A53E2D5A1E8FC68B002CA39D /* ForgotPasswordViewController.swift */,
+				A550258F1EA254C00058908C /* ExploreHeaderCollectionViewCell.swift */,
+				A55025911EA25D5A0058908C /* ExploreDetailViewController.swift */,
+				A51BC6181EBDFA360029EA8D /* scheduleViewController.swift */,
+				A51BC61A1EBE006C0029EA8D /* scheduleTableViewController.swift */,
+				A573A30E1ED9A901003E2DC0 /* SpeakerCollectionViewCell.swift */,
+				A573A3101ED9B984003E2DC0 /* SpeakerViewController.swift */,
+				A5A88D351EE2FBCC00E43707 /* SideBarViewController.swift */,
+				A5A88D371EE2FD2F00E43707 /* SideBarTableViewCell.swift */,
 			);
 			path = Triz;
 			sourceTree = "<group>";
@@ -67,17 +200,39 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A5F70E391E8590BF008D1C63 /* Triz */ = {
+		A5C389A31EE857CD0005AE16 /* Triz Widget */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A5F70E4C1E8590C1008D1C63 /* Build configuration list for PBXNativeTarget "Triz" */;
+			buildConfigurationList = A5C389B11EE857CD0005AE16 /* Build configuration list for PBXNativeTarget "Triz Widget" */;
 			buildPhases = (
-				A5F70E361E8590BF008D1C63 /* Sources */,
-				A5F70E371E8590BF008D1C63 /* Frameworks */,
-				A5F70E381E8590BF008D1C63 /* Resources */,
+				A5C389A01EE857CD0005AE16 /* Sources */,
+				A5C389A11EE857CD0005AE16 /* Frameworks */,
+				A5C389A21EE857CD0005AE16 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+			);
+			name = "Triz Widget";
+			productName = "Triz Widget";
+			productReference = A5C389A41EE857CD0005AE16 /* Triz Widget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		A5F70E391E8590BF008D1C63 /* Triz */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5F70E4C1E8590C1008D1C63 /* Build configuration list for PBXNativeTarget "Triz" */;
+			buildPhases = (
+				16D63C070F09A1D94EA37138 /* [CP] Check Pods Manifest.lock */,
+				A5F70E361E8590BF008D1C63 /* Sources */,
+				A5F70E371E8590BF008D1C63 /* Frameworks */,
+				A5F70E381E8590BF008D1C63 /* Resources */,
+				D91C8980495EF785198A63B0 /* [CP] Embed Pods Frameworks */,
+				913A33D43128A2EFDD447C9A /* [CP] Copy Pods Resources */,
+				A5C389B41EE857CD0005AE16 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5C389AF1EE857CD0005AE16 /* PBXTargetDependency */,
 			);
 			name = Triz;
 			productName = Triz;
@@ -90,14 +245,24 @@
 		A5F70E321E8590BE008D1C63 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = um;
 				TargetAttributes = {
+					A5C389A31EE857CD0005AE16 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = T8CH9WGPYN;
+						ProvisioningStyle = Automatic;
+					};
 					A5F70E391E8590BF008D1C63 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = M3LKC658LA;
+						DevelopmentTeam = T8CH9WGPYN;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -115,11 +280,21 @@
 			projectRoot = "";
 			targets = (
 				A5F70E391E8590BF008D1C63 /* Triz */,
+				A5C389A31EE857CD0005AE16 /* Triz Widget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A5C389A21EE857CD0005AE16 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C389B91EE861EF0005AE16 /* Assets.xcassets in Resources */,
+				A5C389AC1EE857CD0005AE16 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A5F70E381E8590BF008D1C63 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -132,19 +307,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		16D63C070F09A1D94EA37138 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		913A33D43128A2EFDD447C9A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Triz/Pods-Triz-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D91C8980495EF785198A63B0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Triz/Pods-Triz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		A5C389A01EE857CD0005AE16 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C389B81EE85BD20005AE16 /* WidgetCollectionViewCell.swift in Sources */,
+				A5C389A91EE857CD0005AE16 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A5F70E361E8590BF008D1C63 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5F70E401E8590C1008D1C63 /* ViewController.swift in Sources */,
+				A51BC6231EBE16930029EA8D /* CustomHeaderCell.swift in Sources */,
+				A53E2D5B1E8FC68B002CA39D /* ForgotPasswordViewController.swift in Sources */,
+				A573A3111ED9B984003E2DC0 /* SpeakerViewController.swift in Sources */,
+				A55025921EA25D5A0058908C /* ExploreDetailViewController.swift in Sources */,
+				A55025901EA254C00058908C /* ExploreHeaderCollectionViewCell.swift in Sources */,
+				A5F70E541E8597CB008D1C63 /* WalkThroughViewController.swift in Sources */,
+				A5A88D361EE2FBCC00E43707 /* SideBarViewController.swift in Sources */,
+				A573A30F1ED9A901003E2DC0 /* SpeakerCollectionViewCell.swift in Sources */,
+				A51BC61D1EBE04670029EA8D /* MatterTableViewCell.swift in Sources */,
+				A5F70E501E8590F7008D1C63 /* SignUpViewController.swift in Sources */,
+				A5A88D381EE2FD2F00E43707 /* SideBarTableViewCell.swift in Sources */,
+				A5F70E401E8590C1008D1C63 /* LoginViewController.swift in Sources */,
+				A550258E1EA23F710058908C /* ExploreCollectionViewCell.swift in Sources */,
+				A51BC6191EBDFA360029EA8D /* scheduleViewController.swift in Sources */,
+				A5F70E561E859870008D1C63 /* FirstViewController.swift in Sources */,
 				A5F70E3E1E8590C1008D1C63 /* AppDelegate.swift in Sources */,
+				A5F70E581E859C3F008D1C63 /* ExploreViewController.swift in Sources */,
+				A51BC61B1EBE006C0029EA8D /* scheduleTableViewController.swift in Sources */,
+				A5F70E521E859768008D1C63 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		A5C389AF1EE857CD0005AE16 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5C389A31EE857CD0005AE16 /* Triz Widget */;
+			targetProxy = A5C389AE1EE857CD0005AE16 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		A5C389AA1EE857CD0005AE16 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5C389AB1EE857CD0005AE16 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		A5F70E411E8590C1008D1C63 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -164,6 +429,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A5C389B21EE857CD0005AE16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = T8CH9WGPYN;
+				INFOPLIST_FILE = "Triz Widget/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.um.Triz.Triz-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		A5C389B31EE857CD0005AE16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = T8CH9WGPYN;
+				INFOPLIST_FILE = "Triz Widget/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.um.Triz.Triz-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		A5F70E4A1E8590C1008D1C63 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -257,9 +552,12 @@
 		};
 		A5F70E4D1E8590C1008D1C63 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05CB4B5E59C418E0248C051C /* Pods-Triz.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = M3LKC658LA;
+				CODE_SIGN_ENTITLEMENTS = "";
+				DEVELOPMENT_TEAM = T8CH9WGPYN;
 				INFOPLIST_FILE = Triz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.um.Triz;
@@ -270,9 +568,12 @@
 		};
 		A5F70E4E1E8590C1008D1C63 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6131E6053296CEDB2E9CBE69 /* Pods-Triz.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = M3LKC658LA;
+				CODE_SIGN_ENTITLEMENTS = "";
+				DEVELOPMENT_TEAM = T8CH9WGPYN;
 				INFOPLIST_FILE = Triz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.um.Triz;
@@ -284,6 +585,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A5C389B11EE857CD0005AE16 /* Build configuration list for PBXNativeTarget "Triz Widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5C389B21EE857CD0005AE16 /* Debug */,
+				A5C389B31EE857CD0005AE16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A5F70E351E8590BE008D1C63 /* Build configuration list for PBXProject "Triz" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -300,6 +610,7 @@
 				A5F70E4E1E8590C1008D1C63 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

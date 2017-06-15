@@ -106,7 +106,7 @@ class ExploreDetailViewController: UIViewController ,UICollectionViewDelegate,UI
             maskLayer.path = path.cgPath
             self.detailview.layer.mask = maskLayer;
 
-            self.escroll.contentSize = CGSize(width: CGFloat(0), height: CGFloat(self.view.layer.bounds.height + self.scollection.layer.bounds.height + 220))
+            self.escroll.contentSize = CGSize(width: CGFloat(0), height: CGFloat(self.view.layer.bounds.height + self.scollection.layer.bounds.height ))
         })
     }
 

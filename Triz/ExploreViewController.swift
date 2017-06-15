@@ -180,7 +180,8 @@ class ExploreViewController: UIViewController,UICollectionViewDelegate,UICollect
         cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius:  cell.contentView.layer.cornerRadius).cgPath
         cell.layer.masksToBounds = true;
         cell.layer.cornerRadius = 6;
-      cell.exploreLabel.text = self.exploreEvents[indexPath.row]
+      cell.exploreLabel.text = "hosted by UMO"
+        cell.exploreImage.image = #imageLiteral(resourceName: "designf")
 
         return cell
     }

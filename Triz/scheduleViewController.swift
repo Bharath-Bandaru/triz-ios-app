@@ -58,9 +58,7 @@ let purpleInspireColor = UIColor(red:0.13, green:0.03, blue:0.25, alpha:1.0)
         // Dispose of any resources that can be recreated.
     }
      override  func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-            let child_1 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child")
-        let child_2 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child")
-        let child_3 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "child")
+   
         let df = scheduleTableViewController(style: .plain, itemInfo: "Table View",date: event_date,schedule_time: schedule_time,schedule_title: schedule_title,schedule_info: schedule_info,schedule_speaker: schedule_sname,schedule_hashtag: schedule_hashtag,schedule_image: schedule_image)
 
             return [df]

@@ -20,14 +20,18 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet var forwardButton:UIButton!
+    var images = [#imageLiteral(resourceName: "triz intro 1"),#imageLiteral(resourceName: "triz intro 2"),#imageLiteral(resourceName: "triz intro 3")]
     override func viewDidLoad() {
         super.viewDidLoad()
         scrolelrs.currentPage = index
         
-        imageView.image = UIImage(named: imageFile)
+        imageView.image = images[index]
         if case 0 = index {
             forwardButton.setTitle("NEXT", for: UIControlState.normal)
-        } else if case 1 = index {
+        }
+       else if case 1 = index {
+            forwardButton.setTitle("NEXT", for: UIControlState.normal)
+        }else if case 2 = index {
             forwardButton.setTitle("DONE", for: UIControlState.normal)
         }
         
@@ -39,6 +43,10 @@ class FirstViewController: UIViewController {
             WalkThroughViewController
             pageViewController.forward(index: index)
         case 1:
+            let pageViewController = parent as!
+            WalkThroughViewController
+            pageViewController.forward(index: index)
+        case 2:
             let defaults = UserDefaults.standard
             defaults.set(true, forKey: "hasViewedWalkthrough")
             

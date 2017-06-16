@@ -12,7 +12,7 @@ class WalkThroughViewController: UIPageViewController,UIPageViewControllerDataSo
     
     
     //var pageHeadings = ["Personalize", "Locate", "Discover"]
-    var pageImages = ["intro1", "intro2"]
+    var pageImages = ["intro1", "intro2", "intro3"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,19 +26,56 @@ class WalkThroughViewController: UIPageViewController,UIPageViewControllerDataSo
         }
     }
     
+//    func pageViewController(_ pageViewController: UIPageViewController,
+//                            viewControllerBefore viewController: UIViewController) ->
+//        UIViewController? {
+//            var index = (viewController as! FirstViewController).index
+//            index += 1
+//            return viewControllerAtIndex(index: index)
+//    }
+//    func pageViewController(_ pageViewController: UIPageViewController,
+//                            viewControllerAfter viewController: UIViewController) ->
+//        UIViewController? {
+//            var index = (viewController as! FirstViewController).index
+//            index -= 1
+//            return viewControllerAtIndex(index: index)
+//    }
     func pageViewController(_ pageViewController: UIPageViewController,
-                            viewControllerBefore viewController: UIViewController) ->
-        UIViewController? {
-            var index = (viewController as! FirstViewController).index
-            index += 1
-            return viewControllerAtIndex(index: index)
+                            viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        let viewControllerIndex = (viewController as! FirstViewController).index
+        
+        let previousIndex = viewControllerIndex - 1
+        
+        guard previousIndex >= 0 else {
+            return nil
+        }
+        
+        if pageImages.count > previousIndex
+        {
+        
+        }else {
+            return nil
+        }
+        
+        return viewControllerAtIndex(index : previousIndex)
     }
+    
     func pageViewController(_ pageViewController: UIPageViewController,
-                            viewControllerAfter viewController: UIViewController) ->
-        UIViewController? {
-            var index = (viewController as! FirstViewController).index
-            index -= 1
-            return viewControllerAtIndex(index: index)
+                            viewControllerAfter viewController: UIViewController) -> UIViewController? {
+       let viewControllerIndex = (viewController as! FirstViewController).index
+    
+        let nextIndex = viewControllerIndex + 1
+        let orderedViewControllersCount = pageImages.count
+        
+        guard orderedViewControllersCount != nextIndex else {
+            return nil
+        }
+        
+        guard orderedViewControllersCount > nextIndex else {
+            return nil
+        }
+        
+        return viewControllerAtIndex(index : nextIndex)
     }
     func viewControllerAtIndex(index: Int) -> FirstViewController? {
         if index == NSNotFound || index < 0 || index >= pageImages.count {
@@ -47,6 +84,7 @@ class WalkThroughViewController: UIPageViewController,UIPageViewControllerDataSo
             return nil
         }
         // Create a new view controller and pass suitable data.
+        else{
         if let pageContentViewController =
             storyboard?.instantiateViewController(withIdentifier: "FirstViewController")
                 as? FirstViewController {
@@ -58,8 +96,10 @@ class WalkThroughViewController: UIPageViewController,UIPageViewControllerDataSo
             
             
         }
-        print("no use")
-        return nil
+            print("no use")
+            return nil
+        }
+       
     }
     func forward(index:Int) {
         if let nextViewController = viewControllerAtIndex(index: index + 1) {

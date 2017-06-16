@@ -100,6 +100,8 @@ class ExploreDetailViewController: UIViewController ,UICollectionViewDelegate,UI
             self.ebuttonhome.titleLabel?.numberOfLines = 1
             self.ebuttonhome.titleLabel?.adjustsFontSizeToFitWidth = true
             self.ebuttonhome.titleLabel?.lineBreakMode = NSLineBreakMode.byClipping
+            self.eimage.layer.cornerRadius = 5
+            self.eimage.clipsToBounds = true
             let path = UIBezierPath(roundedRect:self.detailview.bounds, byRoundingCorners:[.topLeft, .topRight], cornerRadii: CGSize(width :15, height : 15))
             let maskLayer = CAShapeLayer()
             maskLayer.frame = self.detailview.bounds;

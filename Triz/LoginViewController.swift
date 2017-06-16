@@ -14,7 +14,7 @@ class LoginViewController: UIViewController {
     
     
     let login_url = "http://lowcost-env.hr2dk2nnep.us-west-2.elasticbeanstalk.com/account/login/level1"
-    let cp_url = "https://private-anon-f1146a6b19-conferenceapp1.apiary-mock.com/auth/changepassword"
+    let cp_url = "http://lowcost-env.hr2dk2nnep.us-west-2.elasticbeanstalk.com/account/forgotpassword"
 
     
     @IBOutlet weak var fpass: UILabel!
@@ -67,7 +67,7 @@ class LoginViewController: UIViewController {
         view.endEditing(true)
     }
     func fpassAction(){
-        let alertController = UIAlertController(title: "Enter your email", message: "Your password reset link will be sent to your mail ID", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Enter your email", message: "A random password will be generated to login", preferredStyle: .alert)
         
         let saveAction = UIAlertAction(title: "Send", style: .default, handler: {
             alert -> Void in
@@ -95,7 +95,8 @@ class LoginViewController: UIViewController {
     
     func sendEmailService(em:String)
     {
-        let parameters: Parameters = ["user_name":em ?? "","hmac": ""]
+        let hmac = em+"_1234567890"
+        let parameters: Parameters = ["username":em ,"hmac": hmac.sha1()]
         Alamofire.request(self.cp_url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .downloadProgress(queue: DispatchQueue.global(qos: .utility)) { progress in
                 print("Progress: \(progress.fractionCompleted)")
@@ -118,9 +119,10 @@ class LoginViewController: UIViewController {
                     //
                     //
                     //                    }
-                    print("fffff: \(responseJSON["status"])")
-                    if(responseJSON["status"]==1 ){
-                        let alertController = UIAlertController(title: "Please check your email", message: "A password reset link has been pushed to your inbox", preferredStyle: .alert)
+                    print("fffff: \(responseJSON["value"])")
+                    let jo = responseJSON["value"]
+                    if(jo["password"].string != "" ){
+                        let alertController = UIAlertController(title: jo["password"].string, message: "Please remeber! Here is your new password to login", preferredStyle: .alert)
                         
                  
                         
@@ -128,10 +130,25 @@ class LoginViewController: UIViewController {
                             (action : UIAlertAction!) -> Void in
                             
                         })
+                        let copyAction = UIAlertAction(title: "Copy", style: .default, handler: {
+                            (action : UIAlertAction!) -> Void in
+                            UIPasteboard.general.string =  jo["password"].string
+                            let alertController = UIAlertController(title: "Password copied to clipboard!", message: "", preferredStyle: .alert)
+                            let cancelAction = UIAlertAction(title: "Ok", style: .default, handler: {
+                                (action : UIAlertAction!) -> Void in
+                                
+                            })
+                            alertController.addAction(cancelAction)
+
+                            self.present(alertController, animated: true, completion: nil)
+
+
+                        })
+
                       
                         
                         alertController.addAction(cancelAction)
-                        
+                        alertController.addAction(copyAction)
                         self.present(alertController, animated: true, completion: nil)
 
                         

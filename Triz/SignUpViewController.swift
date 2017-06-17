@@ -33,8 +33,8 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         pass.selectedLineColor = UIColor(rgbValue: 0xEC0070)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.dismissKeyboard))
         signUpView.addGestureRecognizer(tap)
-        NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+     //   NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         // Do any additional setup after loading the view.
     }
     func dismissKeyboard() {
@@ -74,7 +74,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
           }
     
     @IBAction func completeSignUp(_ sender: Any) {
-        print("shaaaa ....\("harshithharshith313@gmail.comTriz&1234Triz&1234_1234567890".sha1())")
+      //  print("shaaaa ....\("harshithharshith313@gmail.comTriz&1234Triz&1234_1234567890".sha1())")
        let sha =  namw.text! + email.text! + pass.text! + mobile.text!
         let parameters: Parameters = ["email": email.text ,"password": pass.text ,"confirmpassword": pass.text ,"name":  namw.text ,"hmac": (sha + "_1234567890").sha1(),"requesttype" : 2]
         Alamofire.request("http://lowcost-env.hr2dk2nnep.us-west-2.elasticbeanstalk.com/account/signup", method: .post, parameters: parameters, encoding: JSONEncoding.default)
@@ -99,20 +99,43 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
                     //
                     //
                     //                    }
-                    if let o = responseJSON["value"].array {
-                                      }
-                    else {
-                            let alertController = UIAlertController(title: "", message: responseJSON["value"].string, preferredStyle: .alert)
+                    let o = responseJSON["value"].array?[0]["errors"][0]
+                    if  let msg = o?["errorMessage"].string {
+                            let alertController = UIAlertController(title: "Error", message: o?["errorMessage"].string, preferredStyle: .alert)
                             self.present(alertController, animated: true, completion:nil)
-                            
+                        
                             let OKAction = UIAlertAction(title: "OK", style: .default)
                             { (action:UIAlertAction) in
                                 print("You've pressed OK button")
                             }
                             alertController.addAction(OKAction)
+                    }
+                    else if(responseJSON["requesttype"] == 2 ){
+                        let alertController = UIAlertController(title: "Success", message: "SignUp successful!", preferredStyle: .alert)
+                        self.present(alertController, animated: true, completion:nil)
                         
+                        let OKAction = UIAlertAction(title: "OK", style: .default)
+                        { (action:UIAlertAction) in
+                            print("You've pressed OK button")
+                        }
+                        alertController.addAction(OKAction)
+                        
+                    }
+                    else {
+                        let alertController = UIAlertController(title: "", message: responseJSON["value"].string, preferredStyle: .alert)
+                        self.present(alertController, animated: true, completion:nil)
+                        
+                        let OKAction = UIAlertAction(title: "OK", style: .default)
+                        { (action:UIAlertAction) in
+                            print("You've pressed OK button")
+                        }
+                        alertController.addAction(OKAction)
 
                     }
+                    
+                    
+
+                    
                     print("fffff: \(responseJSON["status"])")
                     if(responseJSON["status"]==1 ){
                         

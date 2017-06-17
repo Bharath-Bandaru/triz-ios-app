@@ -11,6 +11,7 @@ import XLPagerTabStrip
 import SDWebImage
 
 class scheduleTableViewController: UITableViewController,IndicatorInfoProvider {
+    @IBOutlet var scheduletable: UITableView!
     var schedule_title = Array<String>()
     var schedule_info = Array<String>()
     var schedule_time = Array<String>()
@@ -89,7 +90,7 @@ class scheduleTableViewController: UITableViewController,IndicatorInfoProvider {
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath) as! MatterTableViewCell
+        let cell : MatterTableViewCell = scheduletable.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath) as! MatterTableViewCell
         
                 cell.heading?.text = self.schedule_title[indexPath.row]
                 cell.matter?.text = self.schedule_info[indexPath.row]

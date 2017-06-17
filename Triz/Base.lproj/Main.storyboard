@@ -506,7 +506,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uyj-Xu-N5c">
-                                <rect key="frame" x="0.0" y="64" width="375" height="1041"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="1085"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wHH-Pi-AlJ">
                                         <rect key="frame" x="0.0" y="183" width="375" height="128"/>
@@ -1104,6 +1104,9 @@ on user experience design</string>
                             <outlet property="delegate" destination="oIL-6T-SBc" id="FlM-HU-xSu"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="scheduletable" destination="nA8-GY-EuC" id="cNq-DT-2Pb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HLn-gv-Q4A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1368,10 +1371,10 @@ on user experience design</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9yA-yC-qlw">
-                                <rect key="frame" x="0.0" y="64" width="375" height="698"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="742"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WGl-td-GSC">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1299"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1343"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZeW-oX-etY">
                                                 <rect key="frame" x="22" y="22" width="104" height="142"/>
@@ -1831,6 +1834,6 @@ Iconic Brand Identities</string>
         <image name="triz intro 3" width="1798" height="1451"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Cd1-xe-nNq"/>
+        <segue reference="ZNW-7F-xe7"/>
     </inferredMetricsTieBreakers>
 </document>

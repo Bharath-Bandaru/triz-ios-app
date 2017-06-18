@@ -17,8 +17,8 @@ class SideBarViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     @IBOutlet weak var sidetable: UITableView!
     var currentColorSet: Int!
-    var sidenames = ["Profile","Choose Location","Feedback","Support"," About Triz"]
-    var imgnames = ["user","location","feedback","support","triz"]
+    var sidenames = ["Profile","Choose Location","Feedback","Support"," About Triz","Logout"]
+    var imgnames = ["user","location","feedback","support","triz","logout"]
     override func viewDidLoad() {
         super.viewDidLoad()
         createColorSets()
@@ -37,6 +37,41 @@ class SideBarViewController: UIViewController,UITableViewDelegate,UITableViewDat
         // Dispose of any resources that can be recreated.
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 5:
+            let alertController = UIAlertController(title: "Logout", message: "Do you wish to logout?", preferredStyle: .alert)
+            
+            
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: {
+                (action : UIAlertAction!) -> Void in
+                
+            })
+            let copyAction = UIAlertAction(title: "Ok", style: .destructive, handler: {
+                (action : UIAlertAction!) -> Void in
+                UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+                UserDefaults.standard.synchronize()
+                if let pageViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController{
+                    let navController = UINavigationController(rootViewController: pageViewController)
+                    self.present(navController, animated: true, completion: nil)
+                    let defaults = UserDefaults.standard
+                    defaults.set(true, forKey: "hasViewedWalkthrough")
+
+                }
+
+                
+            })
+            
+            
+            
+            alertController.addAction(copyAction)
+            alertController.addAction(cancelAction)
+
+            self.present(alertController, animated: true, completion: nil)
+             break
+        default: break
+            
+        }
         
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -50,7 +85,7 @@ class SideBarViewController: UIViewController,UITableViewDelegate,UITableViewDat
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
    
     func createGradientLayer() {

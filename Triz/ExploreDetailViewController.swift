@@ -56,12 +56,14 @@ class ExploreDetailViewController: UIViewController ,UICollectionViewDelegate,UI
     var speaker_about_arr = Array<String>()
     var speaker_talks_about_arr = Array<String>()
 
+    @IBOutlet weak var mht: NSLayoutConstraint!
     @IBOutlet weak var detailview: UIView!
     @IBOutlet weak var scollection: UICollectionView!
     var speakeruuid = Array<String>()
     var speakername = Array<String>()
     var speakerbio = Array<String>()
     var speakerimg = Array<String>()
+    @IBOutlet weak var collht: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false;
@@ -83,6 +85,23 @@ class ExploreDetailViewController: UIViewController ,UICollectionViewDelegate,UI
         self.buyBut.layer.cornerRadius=self.buyBut.layer.bounds.height/2
         self.buyBut.clipsToBounds =  true
         self.navigationController?.navigationBar.barTintColor = UIColor.init(argb: 0xEE3568)
+        
+        
+        
+        self.eimage.layer.cornerRadius = 5.0
+        self.eimage.layer.borderWidth = 1.0
+        self.eimage.layer.borderColor = UIColor.clear.cgColor
+        self.eimage.layer.masksToBounds = true
+        self.eimage.clipsToBounds = true
+        self.eimage.layer.shadowColor = UIColor.lightGray.cgColor
+        self.eimage.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        self.eimage.layer.shadowRadius = 2.0
+        self.eimage.layer.shadowOpacity = 2.0
+        self.eimage.layer.masksToBounds = false
+        self.eimage.layer.shadowPath = UIBezierPath(roundedRect: self.eimage.bounds, cornerRadius: self.eimage.layer.cornerRadius).cgPath
+        
+        
+        
      //   self.navigationController?.navigationBar.apply(gradient: [UIColor.init(argb: 0xFF0D8D), UIColor.init(argb: 0xE44E51)])
         let urles = self.spk_url + "/" + self.euuid
         let head = ["hmac" : (self.euuid + "_1234567890").sha1()]
@@ -91,7 +110,7 @@ class ExploreDetailViewController: UIViewController ,UICollectionViewDelegate,UI
         speak = self.titl!
         self.getSpeakers(ur : urles,head : head, completionHandler: { (UIBackgroundFetchResult) in
         })
-        self.navigationItem.title = self.titl
+      //  self.navigationItem.title = self.titl
         self.getSpe()
         // Do any additional setup after loading the view.
     }
@@ -108,7 +127,13 @@ class ExploreDetailViewController: UIViewController ,UICollectionViewDelegate,UI
             maskLayer.path = path.cgPath
             self.detailview.layer.mask = maskLayer;
 
-            self.escroll.contentSize = CGSize(width: CGFloat(0), height: CGFloat(self.view.layer.bounds.height + self.scollection.layer.bounds.height ))
+            
+//            let height = min(self.detailview.bounds.size.height, self.scollection.contentSize.height)
+//            //self.collht.constant = height
+//            self.view.layoutIfNeeded()
+//            self.escroll.contentSize.height =   self.detailview.layer.bounds.height + self.mht.constant
+
+                  //    self.escroll.contentSize = CGSize(width: CGFloat(0), height: CGFloat(self.view.layer.bounds.height + self.scollection.layer.bounds.height ))
         })
     }
 
@@ -277,9 +302,16 @@ class ExploreDetailViewController: UIViewController ,UICollectionViewDelegate,UI
                             self.schedule_image.append(schedule["schedule_image"].string!)
                             self.schedule_hashtag.append(schedule["schedule_hashtag"].string!)
                             self.schedule_sname.append(schedule["schedule_speaker_name"].string!)
+                     
+
                         
                         }
-
+                        self.schedule_title.append("")
+                        self.schedule_info.append("")
+                        self.schedule_time.append("")
+                        self.schedule_image.append("")
+                        self.schedule_hashtag.append("")
+                        self.schedule_sname.append("")
                     print("thehehe\(self.venue)")
                     }
                     else{
@@ -363,17 +395,17 @@ class ExploreDetailViewController: UIViewController ,UICollectionViewDelegate,UI
         }
         else{
             let dv : scheduleViewController = (segue.destination as? scheduleViewController)!
-             dv.event_title = self.event_title
+             dv.event_title = self.titl!
              dv.event_image = self.event_image
              dv.hostedby = self.hostedby
              dv.event_date = self.event_date
-             dv.schedule_title = self.schedule_title
-             dv.schedule_info = self.schedule_info
-             dv.schedule_time = self.schedule_time
-             dv.schedule_image = self.schedule_image
-             dv.schedule_hashtag = self.schedule_hashtag
-             dv.schedule_sname = self.schedule_sname
-
+//             dv.schedule_title = self.schedule_title
+//             dv.schedule_info = self.schedule_info
+//             dv.schedule_time = self.schedule_time
+//             dv.schedule_image = self.schedule_image
+//             dv.schedule_hashtag = self.schedule_hashtag
+//             dv.schedule_sname = self.schedule_sname
+             dv.loadschedule(schedule_title: self.schedule_title, schedule_info: self.schedule_info, schedule_time: self.schedule_time, schedule_image: self.schedule_image, schedule_hashtag: self.schedule_hashtag, schedule_sname: self.schedule_sname)
         }
     }
 

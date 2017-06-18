@@ -17,10 +17,7 @@ class MatterTableViewCell: UITableViewCell {
     @IBOutlet weak var roomno: UILabel!
     @IBOutlet weak var imgv: UIImageView!
     
-    override func awakeFromNib() {
-      super.awakeFromNib()
-        
-    }
+
     override func layoutSubviews() {
         super.layoutSubviews()
         self.imgv.clipsToBounds = true
@@ -28,15 +25,6 @@ class MatterTableViewCell: UITableViewCell {
         
         
     }
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-    }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
 }

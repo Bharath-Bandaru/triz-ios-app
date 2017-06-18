@@ -10,6 +10,7 @@ import SwiftyJSON
 import SkyFloatingLabelTextField
 import CryptoSwift
 import SWRevealViewController
+import KVNProgress
 class LoginViewController: UIViewController {
     
     
@@ -46,6 +47,8 @@ class LoginViewController: UIViewController {
         LoginView.addGestureRecognizer(tap)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        self.navigationController?.navigationBar.applyg(gradient: [UIColor(rgbValue :0xF02529) , UIColor(rgbValue :0xFF0D8D)])
+
         
     }
     func keyboardWillShow(notification: NSNotification) {
@@ -69,11 +72,15 @@ class LoginViewController: UIViewController {
     func fpassAction(){
         let alertController = UIAlertController(title: "Enter your email", message: "A random password will be generated to login", preferredStyle: .alert)
         
-        let saveAction = UIAlertAction(title: "Send", style: .default, handler: {
+        
+        
+        
+             let saveAction = UIAlertAction(title: "Send", style: .default, handler: {
             alert -> Void in
-            
-            let firstTextField = alertController.textFields![0] as UITextField
-            
+                let firstTextField = alertController.textFields![0] as UITextField
+
+               
+
             self.sendEmailService(em: firstTextField.text!);
         })
         
@@ -83,7 +90,9 @@ class LoginViewController: UIViewController {
         })
         
         alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "Enter First Name"
+            textField.placeholder = "Enter Email ID"
+            textField.text = self.username_input.text
+
         }
   
         alertController.addAction(saveAction)
@@ -95,6 +104,7 @@ class LoginViewController: UIViewController {
     
     func sendEmailService(em:String)
     {
+        KVNProgress.show()
         let hmac = em+"_1234567890"
         let parameters: Parameters = ["username":em ,"hmac": hmac.sha1()]
         Alamofire.request(self.cp_url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
@@ -121,8 +131,8 @@ class LoginViewController: UIViewController {
                     //                    }
                     print("fffff: \(responseJSON["value"])")
                     let jo = responseJSON["value"]
-                    if(jo["password"].string != "" ){
-                        let alertController = UIAlertController(title: jo["password"].string, message: "Please remeber! Here is your new password to login", preferredStyle: .alert)
+                    if let pass = jo["password"].string{
+                        let alertController = UIAlertController(title: jo["password"].string, message: "Please remember! Here is your new password to login", preferredStyle: .alert)
                         
                  
                         
@@ -133,6 +143,7 @@ class LoginViewController: UIViewController {
                         let copyAction = UIAlertAction(title: "Copy", style: .default, handler: {
                             (action : UIAlertAction!) -> Void in
                             UIPasteboard.general.string =  jo["password"].string
+                            self.password_input.text = jo["password"].string
                             let alertController = UIAlertController(title: "Password copied to clipboard!", message: "", preferredStyle: .alert)
                             let cancelAction = UIAlertAction(title: "Ok", style: .default, handler: {
                                 (action : UIAlertAction!) -> Void in
@@ -154,6 +165,18 @@ class LoginViewController: UIViewController {
                         
                         
                     }
+                    else{
+                        let alertController = UIAlertController(title: "Sorry!", message:"Somthing went wrong", preferredStyle: .alert)
+                        self.present(alertController, animated: true, completion:nil)
+                        
+                        let OKAction = UIAlertAction(title: "OK", style: .default)
+                        { (action:UIAlertAction) in
+                            print("You've pressed OK button")
+                        }
+                        alertController.addAction(OKAction)
+                    }
+                    KVNProgress.dismiss()
+
                     DispatchQueue.main.async {
                         
                         
@@ -163,6 +186,7 @@ class LoginViewController: UIViewController {
                 case .failure(let error):
                     NSLog("Error result: \(error)")
                     print("Errrrrrr")
+                    KVNProgress.dismiss()
                     DispatchQueue.main.async {
                         
                     }
@@ -186,7 +210,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func DoLogin(_ sender: AnyObject) {
         let sha =  "password" + username_input.text! + password_input.text!
-
+        KVNProgress.show()
         if  self.username_input.text != "" && self.password_input.text != "" {
         let parameters: Parameters = ["username": username_input.text ?? "" ,"password": password_input.text ?? "" ,"granttype":  "password" ,"hmac": (sha + "_1234567890").sha1()]
         Alamofire.request(self.login_url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
@@ -222,12 +246,12 @@ class LoginViewController: UIViewController {
                         defaults.set(self.username_input.text, forKey: "email")
                         defaults.set(o["token"], forKey: "token")
                         defaults.set(o["user_uuid"], forKey: "uuid")
-
                         let view: SWRevealViewController = self.storyboard?.instantiateViewController(withIdentifier: "explore") as! SWRevealViewController
                         self.present(view, animated: true, completion: nil)
 
                     }
                     else {
+                        
                         let alertController = UIAlertController(title: "", message: responseJSON["value"].string, preferredStyle: .alert)
                         self.present(alertController, animated: true, completion:nil)
                         
@@ -245,6 +269,8 @@ class LoginViewController: UIViewController {
                         
                         
                     }
+                    KVNProgress.dismiss()
+
                     DispatchQueue.main.async {
                         
                         
@@ -254,6 +280,8 @@ class LoginViewController: UIViewController {
                 case .failure(let error):
                     NSLog("Error result: \(error)")
                     print("Errrrrrr")
+                    KVNProgress.dismiss()
+
                     DispatchQueue.main.async {
                         
                     }

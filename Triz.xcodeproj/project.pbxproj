@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3C9FDAF7E0D061FA81B4E30E /* Pods_Triz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBFB0782D9A8E5AE90C03E74 /* Pods_Triz.framework */; };
 		A51BC6191EBDFA360029EA8D /* scheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51BC6181EBDFA360029EA8D /* scheduleViewController.swift */; };
-		A51BC61B1EBE006C0029EA8D /* scheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51BC61A1EBE006C0029EA8D /* scheduleTableViewController.swift */; };
 		A51BC61D1EBE04670029EA8D /* MatterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51BC61C1EBE04670029EA8D /* MatterTableViewCell.swift */; };
 		A51BC6231EBE16930029EA8D /* CustomHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51BC6221EBE16930029EA8D /* CustomHeaderCell.swift */; };
 		A53E2D5B1E8FC68B002CA39D /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53E2D5A1E8FC68B002CA39D /* ForgotPasswordViewController.swift */; };
@@ -66,7 +65,6 @@
 		05CB4B5E59C418E0248C051C /* Pods-Triz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Triz.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Triz/Pods-Triz.debug.xcconfig"; sourceTree = "<group>"; };
 		6131E6053296CEDB2E9CBE69 /* Pods-Triz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Triz.release.xcconfig"; path = "Pods/Target Support Files/Pods-Triz/Pods-Triz.release.xcconfig"; sourceTree = "<group>"; };
 		A51BC6181EBDFA360029EA8D /* scheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = scheduleViewController.swift; sourceTree = "<group>"; };
-		A51BC61A1EBE006C0029EA8D /* scheduleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = scheduleTableViewController.swift; sourceTree = "<group>"; };
 		A51BC61C1EBE04670029EA8D /* MatterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatterTableViewCell.swift; sourceTree = "<group>"; };
 		A51BC6221EBE16930029EA8D /* CustomHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomHeaderCell.swift; sourceTree = "<group>"; };
 		A53E2D5A1E8FC68B002CA39D /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 				A550258F1EA254C00058908C /* ExploreHeaderCollectionViewCell.swift */,
 				A55025911EA25D5A0058908C /* ExploreDetailViewController.swift */,
 				A51BC6181EBDFA360029EA8D /* scheduleViewController.swift */,
-				A51BC61A1EBE006C0029EA8D /* scheduleTableViewController.swift */,
 				A573A30E1ED9A901003E2DC0 /* SpeakerCollectionViewCell.swift */,
 				A573A3101ED9B984003E2DC0 /* SpeakerViewController.swift */,
 				A5A88D351EE2FBCC00E43707 /* SideBarViewController.swift */,
@@ -386,7 +383,6 @@
 				A5F70E561E859870008D1C63 /* FirstViewController.swift in Sources */,
 				A5F70E3E1E8590C1008D1C63 /* AppDelegate.swift in Sources */,
 				A5F70E581E859C3F008D1C63 /* ExploreViewController.swift in Sources */,
-				A51BC61B1EBE006C0029EA8D /* scheduleTableViewController.swift in Sources */,
 				A5F70E521E859768008D1C63 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

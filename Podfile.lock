@@ -1,0 +1,48 @@
+PODS:
+  - Alamofire (4.3.0)
+  - Cosmos (8.0.2)
+  - CryptoSwift (0.6.7)
+  - KVNProgress (2.3.1)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
+  - SkyFloatingLabelTextField (2.0.1)
+  - SwiftyJSON (3.1.4)
+  - SWRevealViewController (2.3.0)
+  - XLPagerTabStrip (5.0.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - Cosmos
+  - CryptoSwift
+  - KVNProgress
+  - SDWebImage
+  - SkyFloatingLabelTextField (~> 2.0.0)
+  - SwiftyJSON
+  - SWRevealViewController
+  - XLPagerTabStrip (from `https://github.com/KelvinJin/XLPagerTabStrip`, branch `swift3`)
+
+EXTERNAL SOURCES:
+  XLPagerTabStrip:
+    :branch: swift3
+    :git: https://github.com/KelvinJin/XLPagerTabStrip
+
+CHECKOUT OPTIONS:
+  XLPagerTabStrip:
+    :commit: 99e3cbd5e6b99bb6b1fdf25f4af58fe2e38ad308
+    :git: https://github.com/KelvinJin/XLPagerTabStrip
+
+SPEC CHECKSUMS:
+  Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  Cosmos: 007c0b8e33a85e5363911bdd933571bbe221f7ef
+  CryptoSwift: 685ae257941e5447474348a2b545583e1a16b573
+  KVNProgress: 8167b1f19e2758290c0b6143020ed9dcbb0477a1
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  SkyFloatingLabelTextField: 070e749632ffd608d6fd9db3fa488a822524997c
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
+  XLPagerTabStrip: 87b8b705f9a7178e76a063ffaa2d70045944a965
+
+PODFILE CHECKSUM: d827e4156218ed5253a7540af65695fbacad09fb
+
+COCOAPODS: 1.0.1

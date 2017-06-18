@@ -39,31 +39,41 @@ class SpeakerViewController: UIViewController {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false;
 //        scrollview.contentSize = CGSize(width : 400, height: 2300)
-       sbut.clipsToBounds = true
+        sbut.clipsToBounds = true
         sbut.layer.cornerRadius = sbut.layer.bounds.height/2
         simg.clipsToBounds = true
         view_img.clipsToBounds = true
         view_img.layer.cornerRadius = 5
+        full_view.clipsToBounds = true
+        full_view.layer.cornerRadius = 15
+        scrollview.clipsToBounds = true
+        scrollview.layer.cornerRadius = 15
         simg.layer.cornerRadius = 5
         sabt.text = bio
         sabt.sizeToFit()
-        let path = UIBezierPath(roundedRect:self.full_view.bounds, byRoundingCorners:[.topLeft, .topRight], cornerRadii: CGSize(width :15, height : 15))
-        let maskLayer = CAShapeLayer()
-        maskLayer.frame = self.full_view.bounds;
-        maskLayer.path = path.cgPath
-        self.full_view.layer.mask = maskLayer;
-               let fixedWidth = sabt.frame.size.width
-        sabt.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-        let newSize = sabt.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-        var newFrame = sabt.frame
-        newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
-        sabt.frame = newFrame;
+        scrollViewDidScroll(scrollview)
+
+//        let path = UIBezierPath(roundedRect:self.full_view.bounds, byRoundingCorners:[.topLeft, .topRight], cornerRadii: CGSize(width :15, height : 15))
+//        let maskLayer = CAShapeLayer()
+//        maskLayer.frame = self.full_view.bounds;
+//        maskLayer.path = path.cgPath
+//        self.full_view.layer.mask = maskLayer;
+//               let fixedWidth = sabt.frame.size.width
+//        sabt.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+//        let newSize = sabt.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+//        var newFrame = sabt.frame
+//        newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+//        sabt.frame = newFrame;
         name.text = nam
         simg.sd_setImage(with: URL(string: img!))
         swat.text = works
       
         stitle.text = talks
               // Do any additional setup after loading the view.
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let verticalIndicator = scrollView.subviews.last as? UIImageView
+        verticalIndicator?.backgroundColor = UIColor.green
     }
 
     @IBAction func sbutact(_ sender: Any) {
@@ -75,7 +85,7 @@ class SpeakerViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.scrollview.contentSize = CGSize(width: 375, height: 1500)
+//        self.scrollview.contentSize = CGSize(width: 375, height: 1500)
     }
 
     /*

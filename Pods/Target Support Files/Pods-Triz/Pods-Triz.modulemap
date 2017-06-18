@@ -1,0 +1,6 @@
+framework module Pods_Triz {
+  umbrella header "Pods-Triz-umbrella.h"
+
+  export *
+  module * { export * }
+}

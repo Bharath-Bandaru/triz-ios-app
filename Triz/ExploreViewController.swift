@@ -14,13 +14,13 @@ import SWRevealViewController
 import KVNProgress
 
 class ExploreViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
-
+    
     @IBOutlet weak var openSideBAr: UIBarButtonItem!
     @IBOutlet weak var exploreView: UIView!
     @IBOutlet weak var exploreCollection: UICollectionView!
     var exploreEvents = Array<String>()
     var exploreEventsuuid = Array<String>()
-
+    //var gradientLayer :  CAGradientLayer?
     @IBOutlet weak var curveview: UIView!
     var titl: String?
     var venue : String = ""
@@ -29,34 +29,44 @@ class ExploreViewController: UIViewController,UICollectionViewDelegate,UICollect
     var edate : String = ""
     var tempindex : Int?
     var event_url = "http://lowcost-env.hr2dk2nnep.us-west-2.elasticbeanstalk.com/event"
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         openSideBAr.target = self.revealViewController()
         openSideBAr.action =  #selector(SWRevealViewController.revealToggle(_:))
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-
+        
         self.navigationController?.navigationBar.applyg(gradient: [UIColor(rgbValue :0xF02529) , UIColor(rgbValue :0xFF0D8D)])
         
         getExploreEvents();
         self.automaticallyAdjustsScrollViewInsets = false
-
         
-        }
+        
+    }
     override func viewWillAppear(_ animated: Bool) {
-           }
+    }
     override func viewDidLayoutSubviews() {
         DispatchQueue.main.async(execute: {() -> Void in
-        let path = UIBezierPath(roundedRect:self.curveview.bounds, byRoundingCorners:[.topLeft, .topRight], cornerRadii: CGSize(width :15, height : 15))
-        let maskLayer = CAShapeLayer()
-        maskLayer.frame = self.curveview.bounds;
-        maskLayer.path = path.cgPath
-        self.curveview.layer.mask = maskLayer;
+            let path = UIBezierPath(roundedRect:self.curveview.bounds, byRoundingCorners:[.topLeft, .topRight], cornerRadii: CGSize(width :15, height : 15))
+            let maskLayer = CAShapeLayer()
+            maskLayer.frame = self.curveview.bounds;
+            maskLayer.path = path.cgPath
+            self.curveview.layer.mask = maskLayer;
         })
-
+        
+    }
+    
+    func createGradientLayer() {
+        let gradientLayer : CAGradientLayer
+        gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.view.bounds
+        
+        gradientLayer.colors = [UIColor(rgbValue :0xF02529), UIColor(rgbValue :0xFF0D8D)]
+        
+        self.view.layer.addSublayer(gradientLayer)
     }
     func getExploreEvents(){
-     
+        
         Alamofire.request(self.event_url, method: .get, parameters: nil, encoding: JSONEncoding.default)
             .downloadProgress(queue: DispatchQueue.global(qos: .utility)) { progress in
                 print("Progress: \(progress.fractionCompleted)")
@@ -76,13 +86,13 @@ class ExploreViewController: UIViewController,UICollectionViewDelegate,UICollect
                     
                     let responseJSON = JSON(resultValue)
                     //print("res\(responseJSON)")
-
+                    
                     let exploreArray = responseJSON["value"].array
                     for event in exploreArray!{
                         self.exploreEvents.append(event["event_title"].string!)
                         self.exploreEventsuuid.append(event["event_uuid"].string!)
                     }
-                
+                    
                     DispatchQueue.main.async {
                         self.exploreCollection.reloadData()
                     }
@@ -101,7 +111,7 @@ class ExploreViewController: UIViewController,UICollectionViewDelegate,UICollect
         }
     }
     
- 
+    
     func getDetails(ur : String, head : [String : String],completionHandler:((UIBackgroundFetchResult)->())!){
         
         Alamofire.request(ur, method: .get, parameters: nil,encoding: JSONEncoding.default,headers : head )
@@ -153,22 +163,22 @@ class ExploreViewController: UIViewController,UICollectionViewDelegate,UICollect
         }
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-                  // self.performSegue(withIdentifier: "showdetail", sender: self)
+        // self.performSegue(withIdentifier: "showdetail", sender: self)
         let urle = self.event_url + "/" + self.exploreEventsuuid[indexPath.row]
         print("sfsef \(urle)")
         tempindex =  indexPath.row
-       let head = ["hmac" : (self.exploreEventsuuid[indexPath.row] + "_1234567890").sha1()]
-      KVNProgress.show(withStatus: "Loading event details")
+        let head = ["hmac" : (self.exploreEventsuuid[indexPath.row] + "_1234567890").sha1()]
+        KVNProgress.show(withStatus: "Loading event details")
         getDetails(ur : urle,head : head, completionHandler: { (UIBackgroundFetchResult) in
-                       self.performSegue(withIdentifier: "showdetail", sender: self)
-                      KVNProgress.dismiss()
-            })
+            self.performSegue(withIdentifier: "showdetail", sender: self)
+            KVNProgress.dismiss()
+        })
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "explorecell", for: indexPath) as! ExploreCollectionViewCell
@@ -180,9 +190,9 @@ class ExploreViewController: UIViewController,UICollectionViewDelegate,UICollect
         cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius:  cell.contentView.layer.cornerRadius).cgPath
         cell.layer.masksToBounds = true;
         cell.layer.cornerRadius = 6;
-      cell.exploreLabel.text = "hosted by UMO"
+        cell.exploreLabel.text = "hosted by UMO"
         cell.exploreImage.image = #imageLiteral(resourceName: "designf")
-
+        
         return cell
     }
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -199,7 +209,7 @@ class ExploreViewController: UIViewController,UICollectionViewDelegate,UICollect
         return header
     }
     
-      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showdetail" {
             let dv : ExploreDetailViewController = (segue.destination as? ExploreDetailViewController)!
             print("uuuuuu\(self.venue)")
@@ -209,11 +219,11 @@ class ExploreViewController: UIViewController,UICollectionViewDelegate,UICollect
             dv.euuid = self.exploreEventsuuid[tempindex!]
             dv.sd = self.sdate
             dv.ed = self.edate
-        
+            
         }
     }
- 
-
+    
+    
 }
 extension UINavigationBar
 {

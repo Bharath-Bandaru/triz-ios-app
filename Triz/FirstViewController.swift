@@ -53,8 +53,8 @@ class FirstViewController: UIViewController {
             //dismissViewControllerAnimated(true, completion: nil)
             
             if let pageViewController = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController{
-                
-                present(pageViewController, animated: true, completion: nil)
+                let navController = UINavigationController(rootViewController: pageViewController)
+                present(navController, animated: true, completion: nil)
             }
             
             

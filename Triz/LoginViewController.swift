@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
     let cp_url = "http://lowcost-env.hr2dk2nnep.us-west-2.elasticbeanstalk.com/account/forgotpassword"
 
     
+    @IBOutlet weak var gradview: UIView!
     @IBOutlet weak var fpass: UILabel!
     @IBOutlet var LoginView: UIView!
     @IBOutlet weak var gotoSignUp: UIButton!
@@ -199,6 +200,17 @@ class LoginViewController: UIViewController {
                 print("Background Fetch Complete")
     }
     }
+    override func viewDidLayoutSubviews() {
+        DispatchQueue.main.async(execute: {() -> Void in
+            let path = UIBezierPath(roundedRect:self.gradview.bounds, byRoundingCorners:[.topLeft, .topRight], cornerRadii: CGSize(width :15, height : 15))
+            let maskLayer = CAShapeLayer()
+            maskLayer.frame = self.gradview.bounds;
+            maskLayer.path = path.cgPath
+            self.gradview.layer.mask = maskLayer;
+        })
+        
+    }
+
     
     @IBAction func signUpAct(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

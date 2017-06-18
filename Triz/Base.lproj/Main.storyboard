@@ -51,6 +51,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="amz-2j-3jt">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="1" green="0.050980392156862744" blue="0.55294117647058827" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8nP-n6-0xJ">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
@@ -98,7 +102,7 @@
                                         <attributedString key="attributedText">
                                             <fragment content="Forgot password?">
                                                 <attributes>
-                                                    <color key="NSColor" red="0.33029532432556152" green="0.41743502020835876" blue="0.52285706996917725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="NSColor" red="0.38428381962864722" green="0.17614697807466784" blue="0.19913343664521072" alpha="0.92489455521472397" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <font key="NSFont" size="15" name="HelveticaNeue"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
@@ -126,7 +130,7 @@
                                                 </fragment>
                                                 <fragment content="Sign Up">
                                                     <attributes>
-                                                        <color key="NSColor" red="0.5607843137254902" green="0.0078431372549019607" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="NSColor" red="1" green="0.050980392156862744" blue="0.55294117647058827" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <font key="NSFont" metaFont="system" size="15"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
@@ -149,7 +153,7 @@
                                             </fragment>
                                             <fragment content="Terms &amp; Conditions">
                                                 <attributes>
-                                                    <color key="NSColor" red="0.0" green="0.45098039215686275" blue="0.89411764705882346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="NSColor" red="0.94117647058823528" green="0.14509803921568626" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <font key="NSFont" size="14" name="HelveticaNeue"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
@@ -163,7 +167,7 @@
                                             </fragment>
                                             <fragment content="Privacy Policy">
                                                 <attributes>
-                                                    <color key="NSColor" red="0.0" green="0.45098039215686275" blue="0.89411764705882346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="NSColor" red="0.94117647058823528" green="0.14509803921568626" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <font key="NSFont" size="14" name="HelveticaNeue"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
@@ -212,10 +216,15 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="amz-2j-3jt" secondAttribute="trailing" id="4c7-5C-wb6"/>
                             <constraint firstItem="8nP-n6-0xJ" firstAttribute="leading" secondItem="URf-uv-kQh" secondAttribute="leading" id="CnS-ZK-mi6"/>
                             <constraint firstItem="8nP-n6-0xJ" firstAttribute="top" secondItem="SlU-Zf-AWR" secondAttribute="bottom" id="M6n-ku-kJZ"/>
+                            <constraint firstItem="amz-2j-3jt" firstAttribute="bottom" secondItem="5TR-Fz-nvA" secondAttribute="top" id="WEP-dF-aQg"/>
                             <constraint firstAttribute="trailing" secondItem="8nP-n6-0xJ" secondAttribute="trailing" id="Wqt-7m-nPg"/>
                             <constraint firstItem="5TR-Fz-nvA" firstAttribute="top" secondItem="8nP-n6-0xJ" secondAttribute="bottom" id="f9A-17-mpM"/>
+                            <constraint firstItem="amz-2j-3jt" firstAttribute="top" secondItem="SlU-Zf-AWR" secondAttribute="bottom" id="gHL-iz-RiK"/>
+                            <constraint firstItem="8nP-n6-0xJ" firstAttribute="top" secondItem="amz-2j-3jt" secondAttribute="top" id="lj1-28-i7w"/>
+                            <constraint firstItem="amz-2j-3jt" firstAttribute="leading" secondItem="URf-uv-kQh" secondAttribute="leading" id="wDe-OS-Lfj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="Kvy-7u-Iyo"/>
@@ -224,6 +233,7 @@
                         <outlet property="LoginView" destination="URf-uv-kQh" id="OjW-cO-rSN"/>
                         <outlet property="fpass" destination="kgS-qp-mRb" id="dMi-OK-kRX"/>
                         <outlet property="gotoSignUp" destination="iOn-Bd-tl3" id="o3j-0X-V7x"/>
+                        <outlet property="gradview" destination="8nP-n6-0xJ" id="ptw-du-qFp"/>
                         <outlet property="login_button" destination="SKd-lr-U2P" id="eCj-VY-a0S"/>
                         <outlet property="password_input" destination="O6J-mb-IP9" id="6Uo-ED-nWy"/>
                         <outlet property="username_input" destination="PFG-2i-IJk" id="e9E-A0-mG4"/>
@@ -677,32 +687,32 @@ Hyderabad</string>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="rtq-km-2sG" firstAttribute="top" secondItem="Ndv-Zl-TAP" secondAttribute="top" id="11r-i3-rvD"/>
-                                            <constraint firstItem="Ndv-Zl-TAP" firstAttribute="trailing" secondItem="j0I-SQ-XfG" secondAttribute="trailing" id="1ce-TS-bWY"/>
                                             <constraint firstItem="jvb-mH-k5S" firstAttribute="centerX" secondItem="ZbZ-84-WAn" secondAttribute="centerX" id="2g2-wD-Gbj"/>
                                             <constraint firstItem="oSW-Jv-Hfe" firstAttribute="centerX" secondItem="JOu-s7-cVK" secondAttribute="centerX" id="4kp-Iu-M4G"/>
                                             <constraint firstItem="JOu-s7-cVK" firstAttribute="top" secondItem="Qz7-os-DXs" secondAttribute="bottom" constant="18" id="4tl-O1-4Tm"/>
                                             <constraint firstAttribute="width" constant="375" id="7bX-bt-Qcc"/>
-                                            <constraint firstItem="jvb-mH-k5S" firstAttribute="top" secondItem="j0I-SQ-XfG" secondAttribute="bottom" constant="8" id="7pd-vp-qve"/>
+                                            <constraint firstItem="j0I-SQ-XfG" firstAttribute="top" secondItem="V0f-DJ-SbD" secondAttribute="bottom" constant="6" id="9PR-Wb-gOL"/>
+                                            <constraint firstItem="j0I-SQ-XfG" firstAttribute="leading" secondItem="ZbZ-84-WAn" secondAttribute="leading" constant="15" id="CXC-nf-C08"/>
                                             <constraint firstItem="Qz7-os-DXs" firstAttribute="leading" secondItem="jvb-mH-k5S" secondAttribute="trailing" constant="-6" id="CjK-9l-IhE"/>
-                                            <constraint firstItem="j0I-SQ-XfG" firstAttribute="leading" secondItem="ZbZ-84-WAn" secondAttribute="leading" constant="15" id="Clz-Kt-MUJ"/>
                                             <constraint firstAttribute="width" secondItem="ZbZ-84-WAn" secondAttribute="height" multiplier="375:901" id="JhI-gw-8pf"/>
                                             <constraint firstItem="V0f-DJ-SbD" firstAttribute="top" secondItem="ZbZ-84-WAn" secondAttribute="top" constant="12" id="LRZ-mb-Hwp"/>
                                             <constraint firstItem="DLt-bc-8po" firstAttribute="leading" secondItem="ZbZ-84-WAn" secondAttribute="leading" constant="15" id="MTw-HN-TVi"/>
-                                            <constraint firstItem="j0I-SQ-XfG" firstAttribute="top" secondItem="Ndv-Zl-TAP" secondAttribute="bottom" constant="13" id="Pxk-ZQ-rcc"/>
+                                            <constraint firstItem="jvb-mH-k5S" firstAttribute="top" secondItem="j0I-SQ-XfG" secondAttribute="bottom" constant="8" id="Qvk-B5-cCu"/>
                                             <constraint firstAttribute="trailing" secondItem="Qz7-os-DXs" secondAttribute="trailing" constant="13" id="RQx-fs-gzp"/>
                                             <constraint firstItem="jvb-mH-k5S" firstAttribute="centerX" secondItem="JOu-s7-cVK" secondAttribute="centerX" id="S3e-D4-ypf"/>
                                             <constraint firstAttribute="bottom" secondItem="JOu-s7-cVK" secondAttribute="bottom" id="VIP-2p-2dA"/>
-                                            <constraint firstAttribute="trailing" secondItem="j0I-SQ-XfG" secondAttribute="trailing" constant="13" id="XfZ-1F-8Pu"/>
                                             <constraint firstItem="V0f-DJ-SbD" firstAttribute="centerX" secondItem="ZbZ-84-WAn" secondAttribute="centerX" id="YBf-IK-vJq"/>
-                                            <constraint firstItem="j0I-SQ-XfG" firstAttribute="top" secondItem="V0f-DJ-SbD" secondAttribute="bottom" constant="6" id="YJG-5h-nXF"/>
                                             <constraint firstItem="rtq-km-2sG" firstAttribute="leading" secondItem="ZbZ-84-WAn" secondAttribute="leading" constant="15" id="YhF-09-SQh"/>
                                             <constraint firstItem="JOu-s7-cVK" firstAttribute="top" secondItem="DLt-bc-8po" secondAttribute="bottom" constant="18" id="ZsG-1a-Qc2"/>
                                             <constraint firstAttribute="height" constant="901" id="ae7-8A-AJ1"/>
                                             <constraint firstItem="JOu-s7-cVK" firstAttribute="top" secondItem="jvb-mH-k5S" secondAttribute="bottom" constant="8" symbolic="YES" id="boN-t5-Ppv"/>
                                             <constraint firstItem="JOu-s7-cVK" firstAttribute="leading" secondItem="ZbZ-84-WAn" secondAttribute="leading" id="ckS-0Q-CSw"/>
                                             <constraint firstItem="jvb-mH-k5S" firstAttribute="leading" secondItem="DLt-bc-8po" secondAttribute="trailing" constant="-9" id="kxN-Eb-KNX"/>
+                                            <constraint firstAttribute="trailing" secondItem="j0I-SQ-XfG" secondAttribute="trailing" constant="13" id="kz8-am-1vm"/>
                                             <constraint firstItem="V0f-DJ-SbD" firstAttribute="leading" secondItem="rtq-km-2sG" secondAttribute="trailing" constant="8" id="q2U-y4-oFC"/>
+                                            <constraint firstItem="Ndv-Zl-TAP" firstAttribute="trailing" secondItem="j0I-SQ-XfG" secondAttribute="trailing" id="qIU-W7-M7z"/>
                                             <constraint firstItem="Ndv-Zl-TAP" firstAttribute="leading" secondItem="V0f-DJ-SbD" secondAttribute="trailing" constant="8" id="u6J-DZ-61i"/>
+                                            <constraint firstItem="rtq-km-2sG" firstAttribute="centerY" secondItem="V0f-DJ-SbD" secondAttribute="centerY" id="uoV-fv-Pw7"/>
                                             <constraint firstItem="oSW-Jv-Hfe" firstAttribute="centerY" secondItem="JOu-s7-cVK" secondAttribute="centerY" id="wsM-Fg-uG8"/>
                                         </constraints>
                                     </view>

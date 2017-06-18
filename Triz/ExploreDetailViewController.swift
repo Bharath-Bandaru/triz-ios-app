@@ -70,7 +70,19 @@ class ExploreDetailViewController: UIViewController ,UICollectionViewDelegate,UI
         self.eheading.text = titl
         self.eplace.text =  venue
         self.edesc.text = desc
-        self.eday.text = self.sd + "-" +  self.ed
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let date = dateFormatter.date(from: self.sd) ?? Date()
+        let calendar = Calendar.current
+//
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.day, from: date)
+        let day = calendar.component(.day, from: date)
+        
+        print("dayyyy\(self.sd)\(date)")
+        self.emonth.text = "\(date.monthMedium.uppercased())"
+        self.eday.text =  "\(day)" + "st\n" + date.dayOfWeek()!
         eimage.dropShadow(scale: true)
         buyBut.dropShadow(scale: true)
         ebuttonhome.dropShadow(scale: true)
@@ -435,5 +447,39 @@ extension UIView {
         self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
         self.layer.shouldRasterize = true
         self.layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+    }
+}
+extension Formatter {
+    static let monthMedium: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "LLL"
+        return formatter
+    }()
+    static let hour12: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h"
+        return formatter
+    }()
+    static let minute0x: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "mm"
+        return formatter
+    }()
+    static let amPM: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "a"
+        return formatter
+    }()
+}
+extension Date {
+    var monthMedium: String  { return Formatter.monthMedium.string(from: self) }
+    var hour12:  String      { return Formatter.hour12.string(from: self) }
+    var minute0x: String     { return Formatter.minute0x.string(from: self) }
+    var amPM: String         { return Formatter.amPM.string(from: self) }
+    func dayOfWeek() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEE"
+        return dateFormatter.string(from: self).uppercased()
+        // or use capitalized(with: locale) if you want
     }
 }

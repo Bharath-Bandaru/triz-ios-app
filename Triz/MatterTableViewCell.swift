@@ -18,13 +18,6 @@ class MatterTableViewCell: UITableViewCell {
     @IBOutlet weak var imgv: UIImageView!
     
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.imgv.clipsToBounds = true
-        self.imgv.layer.cornerRadius = imgv.frame.size.height/2
-        
-        
-    }
-
+   
 
 }

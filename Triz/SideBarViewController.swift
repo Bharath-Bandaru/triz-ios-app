@@ -17,8 +17,8 @@ class SideBarViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     @IBOutlet weak var sidetable: UITableView!
     var currentColorSet: Int!
-    var sidenames = ["Profile","Choose Location","Feedback","Support"," About Triz","Logout"]
-    var imgnames = ["user","location","feedback","support","triz","logout"]
+    var sidenames = ["Profile","Choose Location","Feedback"," About Triz","Logout"]
+    var imgnames = ["user","location","feedback","triz","logout"]
     override func viewDidLoad() {
         super.viewDidLoad()
         createColorSets()
@@ -30,7 +30,7 @@ class SideBarViewController: UIViewController,UITableViewDelegate,UITableViewDat
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.sideview.applyGradient(colours: [ UIColor(rgbValue :0x8D007C) , UIColor(rgbValue :0xF05357)])
+        self.sideview.applyGradient(colours: [ UIColor(rgbValue :0xFF0D8D) , UIColor(rgbValue :0x8D007C)])
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -38,10 +38,12 @@ class SideBarViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 5:
+        case 3:
+            self.performSegue(withIdentifier: "aboutid", sender: self)
+
+            break
+        case 4:
             let alertController = UIAlertController(title: "Logout", message: "Do you wish to logout?", preferredStyle: .alert)
-            
-            
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: {
                 (action : UIAlertAction!) -> Void in
@@ -74,6 +76,14 @@ class SideBarViewController: UIViewController,UITableViewDelegate,UITableViewDat
         }
         
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "aboutid" {
+//            let backItem = UIBarButtonItem()
+//            backItem.title = "Home"
+//            navigationItem.backBarButtonItem = backItem
+//        }
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let header = tableView.dequeueReusableCell(withIdentifier: "sidecell") as! SideBarTableViewCell
         header.sidename.text = sidenames[indexPath.row]
@@ -85,7 +95,7 @@ class SideBarViewController: UIViewController,UITableViewDelegate,UITableViewDat
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 5
     }
    
     func createGradientLayer() {

@@ -15,8 +15,8 @@ class ExploreCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var exploreLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.grad_view.layer.cornerRadius = 6
-        self.grad_view.clipsToBounds = true;
+        self.grad_view.layer.cornerRadius = 5
+        self.grad_view.clipsToBounds = true
         createGradientLayer()
     }
     override func layoutSubviews() {

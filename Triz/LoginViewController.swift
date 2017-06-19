@@ -16,7 +16,7 @@ class LoginViewController: UIViewController {
     
     let login_url = "http://lowcost-env.hr2dk2nnep.us-west-2.elasticbeanstalk.com/account/login/level1"
     let cp_url = "http://lowcost-env.hr2dk2nnep.us-west-2.elasticbeanstalk.com/account/forgotpassword"
-
+    
     
     @IBOutlet weak var ht: NSLayoutConstraint!
     @IBOutlet weak var lscroll: UIScrollView!
@@ -34,9 +34,9 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false;
-//        username_input.tintColor = UIColorFromRGB(rgbValue: <#T##UInt#>) // the color of the blinking cursor
-//        username_input.textColor = UIColorFromRGB(rgbValue: <#T##UInt#>)
-//        username_input.lineColor = UIColorFromRGB(rgbValue: <#T##UInt#>)
+        //        username_input.tintColor = UIColorFromRGB(rgbValue: <#T##UInt#>) // the color of the blinking cursor
+        //        username_input.textColor = UIColorFromRGB(rgbValue: <#T##UInt#>)
+        //        username_input.lineColor = UIColorFromRGB(rgbValue: <#T##UInt#>)
         username_input.selectedTitleColor = UIColor(rgbValue: 0xEC0070)
         username_input.selectedLineColor = UIColor(rgbValue: 0xEC0070)
         password_input.selectedTitleColor = UIColor(rgbValue: 0xEC0070)
@@ -46,24 +46,24 @@ class LoginViewController: UIViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         let tap1: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.fpassAction))
         fpass.isUserInteractionEnabled = true
-       fpass.addGestureRecognizer(tap1)
+        fpass.addGestureRecognizer(tap1)
         LoginView.addGestureRecognizer(tap)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         self.navigationController?.navigationBar.applyg(gradient: [UIColor(rgbValue :0xF02529) , UIColor(rgbValue :0xFF0D8D)])
-
+        
         
     }
- 
+    
     
     func keyboardWillShow(notification: NSNotification) {
         if flag == 0{
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-        self.lscroll.contentSize.height = ht.constant
-            self.lscroll.contentOffset.y += 40
-
-        }
-        flag = 1
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+                self.lscroll.contentSize.height = ht.constant
+                self.lscroll.contentOffset.y += 40
+                
+            }
+            flag = 1
         }
     }
     
@@ -72,8 +72,8 @@ class LoginViewController: UIViewController {
             self.lscroll.contentSize.height = 0
             self.lscroll.contentOffset.y = 0
             flag = 0
-
-          
+            
+            
         }
     }
     func dismissKeyboard() {
@@ -85,12 +85,12 @@ class LoginViewController: UIViewController {
         
         
         
-             let saveAction = UIAlertAction(title: "Send", style: .default, handler: {
+        let saveAction = UIAlertAction(title: "Send", style: .default, handler: {
             alert -> Void in
-                let firstTextField = alertController.textFields![0] as UITextField
-
-               
-
+            let firstTextField = alertController.textFields![0] as UITextField
+            
+            
+            
             self.sendEmailService(em: firstTextField.text!);
         })
         
@@ -102,14 +102,14 @@ class LoginViewController: UIViewController {
         alertController.addTextField { (textField : UITextField!) -> Void in
             textField.placeholder = "Enter Email ID"
             textField.text = self.username_input.text
-
+            
         }
-  
+        
         alertController.addAction(saveAction)
         alertController.addAction(cancelAction)
         
         self.present(alertController, animated: true, completion: nil)
-       // self.performSegue(withIdentifier: "fpass", sender: self)
+        // self.performSegue(withIdentifier: "fpass", sender: self)
     }
     
     func sendEmailService(em:String)
@@ -144,7 +144,7 @@ class LoginViewController: UIViewController {
                     if let pass = jo["password"].string{
                         let alertController = UIAlertController(title: jo["password"].string, message: "Please remember! Here is your new password to login", preferredStyle: .alert)
                         
-                 
+                        
                         
                         let cancelAction = UIAlertAction(title: "Ok", style: .default, handler: {
                             (action : UIAlertAction!) -> Void in
@@ -160,18 +160,18 @@ class LoginViewController: UIViewController {
                                 
                             })
                             alertController.addAction(cancelAction)
-
+                            
                             self.present(alertController, animated: true, completion: nil)
-
-
+                            
+                            
                         })
-
-                      
+                        
+                        
                         
                         alertController.addAction(cancelAction)
                         alertController.addAction(copyAction)
                         self.present(alertController, animated: true, completion: nil)
-
+                        
                         
                         
                     }
@@ -186,7 +186,7 @@ class LoginViewController: UIViewController {
                         alertController.addAction(OKAction)
                     }
                     KVNProgress.dismiss()
-
+                    
                     DispatchQueue.main.async {
                         
                         
@@ -207,22 +207,22 @@ class LoginViewController: UIViewController {
                 
                 
                 print("Background Fetch Complete")
-    }
+        }
     }
     override func viewDidLayoutSubviews() {
         DispatchQueue.main.async(execute: {() -> Void in
-            let path = UIBezierPath(roundedRect:self.lscroll.bounds, byRoundingCorners:[.topLeft, .topRight], cornerRadii: CGSize(width :15, height : 15))
+            let path = UIBezierPath(roundedRect:self.gradview.bounds, byRoundingCorners:[.topLeft, .topRight], cornerRadii: CGSize(width :15, height : 15))
             let maskLayer = CAShapeLayer()
-            maskLayer.frame = self.lscroll.bounds;
+            maskLayer.frame = self.gradview.bounds;
             maskLayer.path = path.cgPath
-            self.lscroll.layer.mask = maskLayer;
+            self.gradview.layer.mask = maskLayer;
             self.lscroll.contentSize.width = 0
-
-
+            
+            
         })
         
     }
-
+    
     
     @IBAction func signUpAct(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -236,114 +236,114 @@ class LoginViewController: UIViewController {
         let sha =  "password" + username_input.text! + password_input.text!
         if  self.username_input.text != "" && self.password_input.text != "" {
             KVNProgress.show()
-
-        let parameters: Parameters = ["username": username_input.text ?? "" ,"password": password_input.text ?? "" ,"granttype":  "password" ,"hmac": (sha + "_1234567890").sha1()]
-        Alamofire.request(self.login_url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
-            .downloadProgress(queue: DispatchQueue.global(qos: .utility)) { progress in
-                print("Progress: \(progress.fractionCompleted)")
-            }
-            .validate { request, response, data in
-                // Custom evaluation closure now includes data (allows you to parse data to dig out error messages if necessary)
-                return .success
-            }
-            .responseJSON { response in
-                print(response)
-                switch response.result {
-                case .success( _):
-                    guard let resultValue = response.result.value else {
-                        NSLog("Result value in response is nil")
+            
+            let parameters: Parameters = ["username": username_input.text ?? "" ,"password": password_input.text ?? "" ,"granttype":  "password" ,"hmac": (sha + "_1234567890").sha1()]
+            Alamofire.request(self.login_url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+                .downloadProgress(queue: DispatchQueue.global(qos: .utility)) { progress in
+                    print("Progress: \(progress.fractionCompleted)")
+                }
+                .validate { request, response, data in
+                    // Custom evaluation closure now includes data (allows you to parse data to dig out error messages if necessary)
+                    return .success
+                }
+                .responseJSON { response in
+                    print(response)
+                    switch response.result {
+                    case .success( _):
+                        guard let resultValue = response.result.value else {
+                            NSLog("Result value in response is nil")
+                            return
+                        }
+                        
+                        let responseJSON = JSON(resultValue)
+                        //                    for index in responseJSON["responseCode"].array!{
+                        //
+                        //
+                        //                    }
+                        if let o = responseJSON["value"].array {
+                        }
+                        else if  let o = responseJSON["value"].dictionaryObject{
+                            let preferences = UserDefaults.standard
+                            
+                            let defaults = UserDefaults.standard
+                            defaults.set(true, forKey: "secondtime")
+                            print("logged in")
+                            defaults.set(self.username_input.text, forKey: "email")
+                            defaults.set(o["token"], forKey: "token")
+                            defaults.set(o["user_uuid"], forKey: "uuid")
+                            let view: SWRevealViewController = self.storyboard?.instantiateViewController(withIdentifier: "explore") as! SWRevealViewController
+                            self.present(view, animated: true, completion: nil)
+                            
+                        }
+                        else {
+                            
+                            let alertController = UIAlertController(title: "", message: responseJSON["value"].string, preferredStyle: .alert)
+                            self.present(alertController, animated: true, completion:nil)
+                            
+                            let OKAction = UIAlertAction(title: "OK", style: .default)
+                            { (action:UIAlertAction) in
+                                print("You've pressed OK button")
+                            }
+                            alertController.addAction(OKAction)
+                            
+                            
+                        }
+                        print("fffff: \(responseJSON["status"])")
+                        if(responseJSON["status"]==1 ){
+                            
+                            
+                            
+                        }
+                        KVNProgress.dismiss()
+                        
+                        DispatchQueue.main.async {
+                            
+                            
+                        }
+                        
+                        break
+                    case .failure(let error):
+                        NSLog("Error result: \(error)")
+                        print("Errrrrrr")
+                        KVNProgress.dismiss()
+                        
+                        DispatchQueue.main.async {
+                            
+                        }
+                        // Here I call a completionHandler I wrote for the failure case
                         return
                     }
                     
-                    let responseJSON = JSON(resultValue)
-                    //                    for index in responseJSON["responseCode"].array!{
-                    //
-                    //
-                    //                    }
-                    if let o = responseJSON["value"].array {
-                    }
-                    else if  let o = responseJSON["value"].dictionaryObject{
-                        let preferences = UserDefaults.standard
-                        
-                        let defaults = UserDefaults.standard
-                        defaults.set(true, forKey: "secondtime")
-                        print("logged in")
-                        defaults.set(self.username_input.text, forKey: "email")
-                        defaults.set(o["token"], forKey: "token")
-                        defaults.set(o["user_uuid"], forKey: "uuid")
-                        let view: SWRevealViewController = self.storyboard?.instantiateViewController(withIdentifier: "explore") as! SWRevealViewController
-                        self.present(view, animated: true, completion: nil)
-
-                    }
-                    else {
-                        
-                        let alertController = UIAlertController(title: "", message: responseJSON["value"].string, preferredStyle: .alert)
-                        self.present(alertController, animated: true, completion:nil)
-                        
-                        let OKAction = UIAlertAction(title: "OK", style: .default)
-                        { (action:UIAlertAction) in
-                            print("You've pressed OK button")
-                        }
-                        alertController.addAction(OKAction)
-                        
-                        
-                    }
-                    print("fffff: \(responseJSON["status"])")
-                    if(responseJSON["status"]==1 ){
-                        
-                        
-                        
-                    }
-                    KVNProgress.dismiss()
-
-                    DispatchQueue.main.async {
-                        
-                        
-                    }
                     
-                    break
-                case .failure(let error):
-                    NSLog("Error result: \(error)")
-                    print("Errrrrrr")
-                    KVNProgress.dismiss()
-
-                    DispatchQueue.main.async {
-                        
-                    }
-                    // Here I call a completionHandler I wrote for the failure case
-                    return
-                }
-                
-                
-                
-                print("Background Fetch Complete")
-                
-                
+                    
+                    print("Background Fetch Complete")
+                    
+                    
+            }
+            
         }
-    
-    }
-    else if self.username_input.text == "" {
+        else if self.username_input.text == "" {
             let alertController = UIAlertController(title: "Enter Username", message: "Please enter your username", preferredStyle: .alert)
             self.present(alertController, animated: true, completion:nil)
             let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
                 print("You've pressed OK button");
             }
             alertController.addAction(OKAction)
-
-    
-    }
-    else if self.password_input.text == "" {
+            
+            
+        }
+        else if self.password_input.text == "" {
             let alertController = UIAlertController(title: "Enter Password", message: "Please enter your password", preferredStyle: .alert)
             self.present(alertController, animated: true, completion:nil)
             let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
                 print("You've pressed OK button");
             }
             alertController.addAction(OKAction)
-
-    }
-    else{
-    
-    }
+            
+        }
+        else{
+            
+        }
     }
 }
 extension UIColor {

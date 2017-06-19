@@ -38,41 +38,63 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.dismissKeyboard))
         signUpView.addGestureRecognizer(tap)
         self.navigationController?.navigationBar.applyg(gradient: [UIColor(rgbValue :0xF02529) , UIColor(rgbValue :0xFF0D8D)])
-//        NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-     //   NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        //        NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        //        NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        //   NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         //NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         // Do any additional setup after loading the view.
     }
     func dismissKeyboard() {
         view.endEditing(true)
     }
-      func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         self.siscroll.contentSize.height = 0
         self.siscroll.contentOffset.y = 0
-
+        
         
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.siscroll.contentSize.height = 0
         self.siscroll.contentOffset.y = 0
         view.endEditing(true)
-
+        
         return true
     }
-    func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= keyboardSize.height
-            }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        switch textField.tag {
+        case 1:
+            siscroll.setContentOffset(CGPoint(x: CGFloat(0), y: CGFloat(textField.center.y - 40)), animated: true)
+            
+            break
+        case 2:
+            siscroll.setContentOffset(CGPoint(x: CGFloat(0), y: CGFloat(textField.center.y - 40)), animated: true)
+            
+            break
+        case 3:
+            siscroll.setContentOffset(CGPoint(x: CGFloat(0), y: CGFloat(textField.center.y - 120)), animated: true)
+            
+            break
+        case 4:
+            siscroll.setContentOffset(CGPoint(x: CGFloat(0), y: CGFloat(textField.center.y - 150)), animated: true)
+            
+            break
+        case 5:
+            siscroll.setContentOffset(CGPoint(x: CGFloat(0), y: CGFloat(textField.center.y - 200)), animated: true)
+            
+            break
+        default:
+            break
         }
     }
-
+    
     func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y = 0
-            }
+            self.siscroll.contentSize.height = 0
+            self.siscroll.contentOffset.y = 0
+            flag = 0
+            
+            
         }
     }
     override func viewDidLayoutSubviews() {
@@ -89,17 +111,17 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-   
+    
     @IBAction func LoginButAct(_ sender: Any) {
         self.performSegue(withIdentifier: "logins", sender: self)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let viewController :LoginViewController = storyboard.instantiateViewController(withIdentifier :"LoginViewController") as! LoginViewController
-//        self.navigationController?.pushViewController(viewController, animated: true)
-          }
+        //        let viewController :LoginViewController = storyboard.instantiateViewController(withIdentifier :"LoginViewController") as! LoginViewController
+        //        self.navigationController?.pushViewController(viewController, animated: true)
+    }
     
     @IBAction func completeSignUp(_ sender: Any) {
-      //  print("shaaaa ....\("harshithharshith313@gmail.comTriz&1234Triz&1234_1234567890".sha1())")
-       let sha =  namw.text! + email.text! + pass.text! + mobile.text!
+        //  print("shaaaa ....\("harshithharshith313@gmail.comTriz&1234Triz&1234_1234567890".sha1())")
+        let sha =  namw.text! + email.text! + pass.text! + mobile.text!
         let parameters: Parameters = ["email": email.text ,"password": pass.text ,"confirmpassword": pass.text ,"name":  namw.text ,"hmac": (sha + "_1234567890").sha1(),"requesttype" : 2]
         Alamofire.request("http://lowcost-env.hr2dk2nnep.us-west-2.elasticbeanstalk.com/account/signup", method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .downloadProgress(queue: DispatchQueue.global(qos: .utility)) { progress in
@@ -125,14 +147,14 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
                     //                    }
                     let o = responseJSON["value"].array?[0]["errors"][0]
                     if  let msg = o?["errorMessage"].string {
-                            let alertController = UIAlertController(title: "Error", message: o?["errorMessage"].string, preferredStyle: .alert)
-                            self.present(alertController, animated: true, completion:nil)
+                        let alertController = UIAlertController(title: "Error", message: o?["errorMessage"].string, preferredStyle: .alert)
+                        self.present(alertController, animated: true, completion:nil)
                         
-                            let OKAction = UIAlertAction(title: "OK", style: .default)
-                            { (action:UIAlertAction) in
-                                print("You've pressed OK button")
-                            }
-                            alertController.addAction(OKAction)
+                        let OKAction = UIAlertAction(title: "OK", style: .default)
+                        { (action:UIAlertAction) in
+                            print("You've pressed OK button")
+                        }
+                        alertController.addAction(OKAction)
                     }
                     else if(responseJSON["requesttype"] == 2 ){
                         let alertController = UIAlertController(title: "Success", message: "SignUp successful!", preferredStyle: .alert)
@@ -154,11 +176,11 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
                             print("You've pressed OK button")
                         }
                         alertController.addAction(OKAction)
-
+                        
                     }
                     
                     
-
+                    
                     
                     print("fffff: \(responseJSON["status"])")
                     if(responseJSON["status"]==1 ){
@@ -186,7 +208,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
                     NSLog("Error result: \(error)")
                     print("Errrrrrr")
                     
-
+                    
                     DispatchQueue.main.async {
                         
                     }

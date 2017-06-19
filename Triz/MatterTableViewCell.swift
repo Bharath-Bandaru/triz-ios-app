@@ -28,6 +28,10 @@ class MatterTableViewCell: UITableViewCell {
         self.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         self.layer.shadowRadius = 2.0
         self.layer.shadowOpacity = 2.0
+        self.gview.clipsToBounds = true
+        self.gview.layer.cornerRadius = 5
+        self.imgv.clipsToBounds = true
+        self.imgv.layer.cornerRadius = 5
         self.layer.masksToBounds = false
         self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
         var gradientLayer: CAGradientLayer!
@@ -35,7 +39,7 @@ class MatterTableViewCell: UITableViewCell {
         
         gradientLayer.frame = self.gview.layer.bounds
         
-        gradientLayer.colors = [UIColor(rgbValue : 0xD8D8D8).cgColor, UIColor(rgbValue : 0xE80505).cgColor]
+        gradientLayer.colors = [UIColor(rgbValue : 0x000000).cgColor, UIColor(rgbValue : 0x000000).cgColor]
         
         self.gview.layer.addSublayer(gradientLayer)
     }

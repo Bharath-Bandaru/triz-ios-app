@@ -22,7 +22,7 @@ class scheduleViewController: UIViewController ,UITableViewDelegate,UITableViewD
     var schedule_image = Array<String>()
     var schedule_hashtag = Array<String>()
     var schedule_sname = Array<String>()
-    
+    var flag = 0
     @IBOutlet weak var wview: UIView!
     @IBOutlet weak var stable: UITableView!
     @IBOutlet weak var sscroll: UIScrollView!
@@ -59,15 +59,14 @@ class scheduleViewController: UIViewController ,UITableViewDelegate,UITableViewD
         print("urllll\(event_image)")
         event_imageO.sd_setImage(with: URL(string : event_image))
         
-        
-        self.event_imageO.layer.cornerRadius = 5.0
         self.event_imageO.clipsToBounds = true
-        self.event_imageO.layer.shadowColor = UIColor.darkGray.cgColor
-        self.event_imageO.layer.shadowOffset = CGSize(width: 0, height: 1.0)
-        self.event_imageO.layer.shadowRadius = 2.0
-        self.event_imageO.layer.shadowOpacity = 5.0
-        self.event_imageO.layer.masksToBounds = false
-        self.event_imageO.layer.shadowPath = UIBezierPath(roundedRect: self.event_imageO.bounds, cornerRadius: self.event_imageO.layer.cornerRadius).cgPath
+        self.event_imageO.layer.cornerRadius = 5.0
+//        self.event_imageO.layer.shadowColor = UIColor.darkGray.cgColor
+//        self.event_image O.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+//        self.event_imageO.layer.shadowRadius = 2.0
+//        self.event_imageO.layer.shadowOpacity = 5.0
+//        self.event_imageO.layer.masksToBounds = false
+//        self.event_imageO.layer.shadowPath = UIBezierPath(roundedRect: self.event_imageO.bounds, cornerRadius: self.event_imageO.layer.cornerRadius).cgPath
         
         
         
@@ -254,22 +253,34 @@ class scheduleViewController: UIViewController ,UITableViewDelegate,UITableViewD
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell : MatterTableViewCell  = tableView.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath) as! MatterTableViewCell
+        if self.flag == 0 {
+        if self.schedule_title[(indexPath as NSIndexPath).section] == "" {
+            cell.matter.textAlignment = .center
+            cell.matter.font = UIFont(name: "Avenir-Regular", size: 35.0)
+            cell.matter.font = UIFont.boldSystemFont(ofSize: 35)
+        }
+        if((indexPath as NSIndexPath).section == self.schedule_time.count-1){
+            cell.gview.isHidden = true
+            self.flag = 1
+        }
         
-        
-        cell.heading?.text = self.schedule_title[(indexPath as NSIndexPath).section]
-        cell.matter?.text = self.schedule_info[(indexPath as NSIndexPath).section]
-        cell.roomno?.text = self.schedule_hashtag[(indexPath as NSIndexPath).section]
-        let ur = self.schedule_image[(indexPath as NSIndexPath).section]
-        cell.imgv.sd_setImage(with: URL(string : ur))
-        cell.imgname?.text = self.schedule_sname[(indexPath as NSIndexPath).section]
-        print("timmmm\(self.schedule_time)")
         //        if self.sc hedule_info[(indexPath as NSIndexPath).section + 1] != "" {
         //            self.schedule_time.remove(at: (indexPath as NSIndexPath).section + 1)
         //        }
         //        else{
         //
         //        }
+            cell.heading?.text = self.schedule_title[(indexPath as NSIndexPath).section]
+            cell.matter?.text = self.schedule_info[(indexPath as NSIndexPath).section]
+            cell.roomno?.text = self.schedule_hashtag[(indexPath as NSIndexPath).section]
+            let ur = self.schedule_image[(indexPath as NSIndexPath).section]
+            cell.imgv.sd_setImage(with: URL(string : ur))
+            cell.imgname?.text = self.schedule_sname[(indexPath as NSIndexPath).section]
+            print("timmmm\(self.schedule_time)")
+        
+        }
         
         
         return cell
@@ -287,86 +298,86 @@ class scheduleViewController: UIViewController ,UITableViewDelegate,UITableViewD
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30.0    }
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        
-        if section < self.schedule_time.count - 2{
-            if self.schedule_info[section+1] == ""
-            {
-                print("one")
-                return 40.0
-            }
-            else {
-                print("zero")
-                
-                return 0
-            }
-            
-        }
-        else {
-            print("zero")
-            
-            return 0
-        }
-        
-        
-        
-    }
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 35))
-        
-        
-        footerView.backgroundColor = UIColor(rgbValue : 0xFF0D8D)
-        
-        let version = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
-        version.font = version.font.withSize(15)
-        version.textColor = UIColor.white
-        version.center = CGPoint(x: footerView.bounds.size.width - 50, y: 20)
-        version.translatesAutoresizingMaskIntoConstraints = true
-        footerView.addSubview(version)
-        let version1 = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
-        version1.font = version.font.withSize(15)
-        version1.textColor = UIColor.white
-        version1.center = CGPoint(x :110, y: 20)
-        version1.translatesAutoresizingMaskIntoConstraints = true
-        footerView.addSubview(version1)
-        
-        
-        //        let footerView1 = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
-        //
-        //
-        //        footerView1.backgroundColor = UIColorFromRGB(0x4D3291)
-        //
-        //        let version2 = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
-        //        version2.font = version2.font.withSize(15)
-        //        version2.textColor = UIColor.white
-        //        version2.center = CGPoint(x: footerView1.bounds.size.width - 50, y: 20)
-        //        version2.translatesAutoresizingMaskIntoConstraints = true
-        //        footerView1.addSubview(version2)
-        //        let version3 = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
-        //        version3.font = version.font.withSize(15)
-        //        version3.textColor = UIColor.white
-        //        version3.center = CGPoint(x :110, y: 20)
-        //        version3.translatesAutoresizingMaskIntoConstraints = true
-        //        footerView1.addSubview(version3)
-        
-        if self.schedule_title[section+1] == "Coffee Break"
-        {
-            version.text = self.schedule_time[section+1]
-            version1.text = self.schedule_title[section+1]
-            
-        }
-        else     if self.schedule_title[section+1] == "Lunch Break"
-        {
-            version.text = self.schedule_time[section+1]
-            version1.text = self.schedule_title[section+1]
-            
-        }
-        else {
-            print("zero")
-            
-        }
-        return footerView
-        
-    }
-    
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        
+//        if section < self.schedule_time.count - 2{
+//            if self.schedule_info[section+1] == ""
+//            {
+//                print("one")
+//                return 40.0
+//            }
+//            else {
+//                print("zero")
+//                
+//                return 0
+//            }
+//            
+//        }
+//        else {
+//            print("zero")
+//            
+//            return 0
+//        }
+//        
+//        
+//        
+//    }
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 35))
+//        
+//        
+//        footerView.backgroundColor = UIColor(rgbValue : 0xFF0D8D)
+//        
+//        let version = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+//        version.font = version.font.withSize(15)
+//        version.textColor = UIColor.white
+//        version.center = CGPoint(x: footerView.bounds.size.width - 50, y: 20)
+//        version.translatesAutoresizingMaskIntoConstraints = true
+//        footerView.addSubview(version)
+//        let version1 = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+//        version1.font = version.font.withSize(15)
+//        version1.textColor = UIColor.white
+//        version1.center = CGPoint(x :110, y: 20)
+//        version1.translatesAutoresizingMaskIntoConstraints = true
+//        footerView.addSubview(version1)
+//        
+//        
+//        //        let footerView1 = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
+//        //
+//        //
+//        //        footerView1.backgroundColor = UIColorFromRGB(0x4D3291)
+//        //
+//        //        let version2 = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+//        //        version2.font = version2.font.withSize(15)
+//        //        version2.textColor = UIColor.white
+//        //        version2.center = CGPoint(x: footerView1.bounds.size.width - 50, y: 20)
+//        //        version2.translatesAutoresizingMaskIntoConstraints = true
+//        //        footerView1.addSubview(version2)
+//        //        let version3 = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+//        //        version3.font = version.font.withSize(15)
+//        //        version3.textColor = UIColor.white
+//        //        version3.center = CGPoint(x :110, y: 20)
+//        //        version3.translatesAutoresizingMaskIntoConstraints = true
+//        //        footerView1.addSubview(version3)
+//        
+//        if self.schedule_title[section+1] == "Coffee Break"
+//        {
+//            version.text = self.schedule_time[section+1]
+//            version1.text = self.schedule_title[section+1]
+//            
+//        }
+//        else     if self.schedule_title[section+1] == "Lunch Break"
+//        {
+//            version.text = self.schedule_time[section+1]
+//            version1.text = self.schedule_title[section+1]
+//            
+//        }
+//        else {
+//            print("zero")
+//            
+//        }
+//        return footerView
+//        
+//    }
+//    
 }

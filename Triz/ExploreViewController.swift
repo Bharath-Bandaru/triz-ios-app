@@ -61,7 +61,7 @@ class ExploreViewController: UIViewController,UICollectionViewDelegate,UICollect
         gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.view.bounds
         
-        gradientLayer.colors = [UIColor(rgbValue :0xF02529), UIColor(rgbValue :0xFF0D8D)]
+        gradientLayer.colors = [UIColor(rgbValue :0x000000), UIColor(rgbValue :0xFF0D8D)]
         
         self.view.layer.addSublayer(gradientLayer)
     }

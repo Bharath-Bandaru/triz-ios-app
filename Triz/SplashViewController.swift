@@ -10,10 +10,11 @@ import UIKit
 import SWRevealViewController
 class SplashViewController: UIViewController {
     
+    @IBOutlet weak var spview: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         perform(#selector(SplashViewController.showNext), with: nil, afterDelay: 2)
-        
+        createGradientLayer()
         // Do any additional setup after loading the view.
     }
     public func showNext(){
@@ -51,7 +52,17 @@ class SplashViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    func createGradientLayer() {
+        
+        var gradientLayer: CAGradientLayer!
+        gradientLayer = CAGradientLayer()
+        
+        gradientLayer.frame = self.spview.bounds
+        
+        gradientLayer.colors = [UIColor(rgbValue : 0xF72B30).cgColor, UIColor(rgbValue : 0xFF0D8D).cgColor]
+        
+        self.spview.layer.addSublayer(gradientLayer)
+    }
     
     /*
      // MARK: - Navigation

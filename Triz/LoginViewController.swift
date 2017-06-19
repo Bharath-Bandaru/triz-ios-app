@@ -18,6 +18,8 @@ class LoginViewController: UIViewController {
     let cp_url = "http://lowcost-env.hr2dk2nnep.us-west-2.elasticbeanstalk.com/account/forgotpassword"
 
     
+    @IBOutlet weak var ht: NSLayoutConstraint!
+    @IBOutlet weak var lscroll: UIScrollView!
     @IBOutlet weak var gradview: UIView!
     @IBOutlet weak var fpass: UILabel!
     @IBOutlet var LoginView: UIView!
@@ -28,10 +30,10 @@ class LoginViewController: UIViewController {
     
     var login_session:String = ""
     
-    
+    var flag = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.automaticallyAdjustsScrollViewInsets = false;
 //        username_input.tintColor = UIColorFromRGB(rgbValue: <#T##UInt#>) // the color of the blinking cursor
 //        username_input.textColor = UIColorFromRGB(rgbValue: <#T##UInt#>)
 //        username_input.lineColor = UIColorFromRGB(rgbValue: <#T##UInt#>)
@@ -52,19 +54,26 @@ class LoginViewController: UIViewController {
 
         
     }
+ 
+    
     func keyboardWillShow(notification: NSNotification) {
+        if flag == 0{
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= keyboardSize.height
-            }
+        self.lscroll.contentSize.height = ht.constant
+            self.lscroll.contentOffset.y += 40
+
+        }
+        flag = 1
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y = 0
-            }
+            self.lscroll.contentSize.height = 0
+            self.lscroll.contentOffset.y = 0
+            flag = 0
+
+          
         }
     }
     func dismissKeyboard() {
@@ -202,11 +211,14 @@ class LoginViewController: UIViewController {
     }
     override func viewDidLayoutSubviews() {
         DispatchQueue.main.async(execute: {() -> Void in
-            let path = UIBezierPath(roundedRect:self.gradview.bounds, byRoundingCorners:[.topLeft, .topRight], cornerRadii: CGSize(width :15, height : 15))
+            let path = UIBezierPath(roundedRect:self.lscroll.bounds, byRoundingCorners:[.topLeft, .topRight], cornerRadii: CGSize(width :15, height : 15))
             let maskLayer = CAShapeLayer()
-            maskLayer.frame = self.gradview.bounds;
+            maskLayer.frame = self.lscroll.bounds;
             maskLayer.path = path.cgPath
-            self.gradview.layer.mask = maskLayer;
+            self.lscroll.layer.mask = maskLayer;
+            self.lscroll.contentSize.width = 0
+
+
         })
         
     }
@@ -222,8 +234,9 @@ class LoginViewController: UIViewController {
     
     @IBAction func DoLogin(_ sender: AnyObject) {
         let sha =  "password" + username_input.text! + password_input.text!
-        KVNProgress.show()
         if  self.username_input.text != "" && self.password_input.text != "" {
+            KVNProgress.show()
+
         let parameters: Parameters = ["username": username_input.text ?? "" ,"password": password_input.text ?? "" ,"granttype":  "password" ,"hmac": (sha + "_1234567890").sha1()]
         Alamofire.request(self.login_url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .downloadProgress(queue: DispatchQueue.global(qos: .utility)) { progress in

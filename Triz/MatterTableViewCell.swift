@@ -16,7 +16,29 @@ class MatterTableViewCell: UITableViewCell {
     @IBOutlet weak var matter: UILabel!
     @IBOutlet weak var roomno: UILabel!
     @IBOutlet weak var imgv: UIImageView!
+    @IBOutlet weak var gview: UIView!
     
+    override func layoutSubviews() {
+        self.contentView.layer.cornerRadius = 5.0
+        self.contentView.layer.borderWidth = 1.0
+        self.contentView.layer.borderColor = UIColor.clear.cgColor
+        self.contentView.layer.masksToBounds = true
+        self.contentView.clipsToBounds = true
+        self.layer.shadowColor = UIColor.lightGray.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        self.layer.shadowRadius = 2.0
+        self.layer.shadowOpacity = 2.0
+        self.layer.masksToBounds = false
+        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
+        var gradientLayer: CAGradientLayer!
+        gradientLayer = CAGradientLayer()
+        
+        gradientLayer.frame = self.gview.layer.bounds
+        
+        gradientLayer.colors = [UIColor(rgbValue : 0xD8D8D8).cgColor, UIColor(rgbValue : 0xE80505).cgColor]
+        
+        self.gview.layer.addSublayer(gradientLayer)
+    }
 
    
 

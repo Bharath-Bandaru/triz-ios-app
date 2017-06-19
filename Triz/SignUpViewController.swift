@@ -13,6 +13,7 @@ import CryptoSwift
 
 class SignUpViewController: UIViewController,UITextFieldDelegate {
     
+    @IBOutlet weak var siscroll: UIScrollView!
     @IBOutlet weak var viewone: UIView!
     @IBOutlet var signUpView: UIView!
     @IBOutlet weak var lastname: SkyFloatingLabelTextField!
@@ -20,6 +21,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var pass: SkyFloatingLabelTextField!
     @IBOutlet weak var email: SkyFloatingLabelTextField!
     @IBOutlet weak var namw: SkyFloatingLabelTextField!
+    var flag = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,8 +38,8 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.dismissKeyboard))
         signUpView.addGestureRecognizer(tap)
         self.navigationController?.navigationBar.applyg(gradient: [UIColor(rgbValue :0xF02529) , UIColor(rgbValue :0xFF0D8D)])
-        NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
      //   NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         //NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         // Do any additional setup after loading the view.
@@ -45,12 +47,17 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
     func dismissKeyboard() {
         view.endEditing(true)
     }
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
+      func textFieldDidEndEditing(_ textField: UITextField) {
+        self.siscroll.contentSize.height = 0
+        self.siscroll.contentOffset.y = 0
+
         
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.siscroll.contentSize.height = 0
+        self.siscroll.contentOffset.y = 0
+        view.endEditing(true)
+
         return true
     }
     func keyboardWillShow(notification: NSNotification) {
@@ -60,7 +67,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
             }
         }
     }
-    
+
     func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0{

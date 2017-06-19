@@ -16,7 +16,7 @@ class MatterTableViewCell: UITableViewCell {
     @IBOutlet weak var matter: UILabel!
     @IBOutlet weak var roomno: UILabel!
     @IBOutlet weak var imgv: UIImageView!
-    @IBOutlet weak var gview: UIView!
+    //@IBOutlet weak var gview: UIView!
     
     override func layoutSubviews() {
         self.contentView.layer.cornerRadius = 5.0
@@ -28,8 +28,8 @@ class MatterTableViewCell: UITableViewCell {
         self.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         self.layer.shadowRadius = 2.0
         self.layer.shadowOpacity = 2.0
-        self.gview.clipsToBounds = true
-        self.gview.layer.cornerRadius = 5
+     //   self.gview.clipsToBounds = true
+     //   self.gview.layer.cornerRadius = 5
         self.imgv.clipsToBounds = true
         self.imgv.layer.cornerRadius = 5
         self.layer.masksToBounds = false
@@ -37,13 +37,21 @@ class MatterTableViewCell: UITableViewCell {
         var gradientLayer: CAGradientLayer!
         gradientLayer = CAGradientLayer()
         
-        gradientLayer.frame = self.gview.layer.bounds
+  //      gradientLayer.frame = self.gview.layer.bounds
         
         gradientLayer.colors = [UIColor(rgbValue : 0x000000).cgColor, UIColor(rgbValue : 0x000000).cgColor]
         
-        self.gview.layer.addSublayer(gradientLayer)
+     //   self.gview.layer.addSublayer(gradientLayer)
     }
-
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imgname?.text = ""
+        heading?.text = ""
+        matter?.text = ""
+        roomno?.text = ""
+    
+        imgv?.image = nil
+    }
    
 
 }

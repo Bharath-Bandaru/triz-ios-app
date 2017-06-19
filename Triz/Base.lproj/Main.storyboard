@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nsW-yX-mhX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nsW-yX-mhX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -1598,7 +1598,7 @@ Hyderabad</string>
                                                 <rect key="frame" x="0.0" y="28" width="375" height="137"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GUQ-OW-J7B" id="PIP-cE-rVY">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="136.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="137"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ft9-C2-tgF">
@@ -1634,10 +1634,6 @@ on user experience design</string>
                                                             <color key="textColor" red="0.80784313730000001" green="0.090196078430000007" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ff6-a1-f55">
-                                                            <rect key="frame" x="8" y="5" width="98" height="129"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHANE MORRIS " lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="cVN-AO-Dyd">
                                                             <rect key="frame" x="12" y="98" width="85" height="30"/>
                                                             <constraints>
@@ -1650,20 +1646,15 @@ on user experience design</string>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="ff6-a1-f55" firstAttribute="leading" secondItem="PIP-cE-rVY" secondAttribute="leading" constant="8" id="04l-lJ-EKa"/>
                                                         <constraint firstItem="j57-Gw-nRL" firstAttribute="trailing" secondItem="834-Da-bkJ" secondAttribute="trailing" id="3A4-hZ-NhU"/>
                                                         <constraint firstItem="cVN-AO-Dyd" firstAttribute="baseline" secondItem="834-Da-bkJ" secondAttribute="firstBaseline" constant="-6" id="47V-cQ-d4Z"/>
                                                         <constraint firstItem="j57-Gw-nRL" firstAttribute="top" secondItem="RWA-k4-aQS" secondAttribute="bottom" constant="-1" id="4ix-vt-l0j"/>
                                                         <constraint firstItem="RWA-k4-aQS" firstAttribute="top" secondItem="PIP-cE-rVY" secondAttribute="topMargin" id="7Rj-Lm-rfd"/>
-                                                        <constraint firstItem="ff6-a1-f55" firstAttribute="leading" secondItem="Ft9-C2-tgF" secondAttribute="leading" id="7Sf-yl-EhO"/>
-                                                        <constraint firstItem="834-Da-bkJ" firstAttribute="leading" secondItem="ff6-a1-f55" secondAttribute="trailing" constant="8" id="C1y-bl-BZh"/>
-                                                        <constraint firstItem="ff6-a1-f55" firstAttribute="width" secondItem="Ft9-C2-tgF" secondAttribute="width" constant="1" id="FZ5-qe-GFi"/>
                                                         <constraint firstItem="834-Da-bkJ" firstAttribute="top" secondItem="j57-Gw-nRL" secondAttribute="bottom" constant="2" id="Fxw-tO-pjM"/>
                                                         <constraint firstItem="j57-Gw-nRL" firstAttribute="leading" secondItem="Ft9-C2-tgF" secondAttribute="trailing" constant="9" id="GJn-Cw-nbn"/>
                                                         <constraint firstItem="Ft9-C2-tgF" firstAttribute="leading" secondItem="PIP-cE-rVY" secondAttribute="leadingMargin" id="KiO-eB-1cn"/>
                                                         <constraint firstItem="Ft9-C2-tgF" firstAttribute="top" secondItem="PIP-cE-rVY" secondAttribute="top" constant="5" id="L79-7z-zZ3"/>
                                                         <constraint firstItem="Ft9-C2-tgF" firstAttribute="centerY" secondItem="PIP-cE-rVY" secondAttribute="centerY" constant="1" id="Q3h-v8-B9M"/>
-                                                        <constraint firstItem="ff6-a1-f55" firstAttribute="height" secondItem="Ft9-C2-tgF" secondAttribute="height" id="Vln-eY-Va3"/>
                                                         <constraint firstItem="Ft9-C2-tgF" firstAttribute="top" secondItem="PIP-cE-rVY" secondAttribute="topMargin" constant="-3" id="WMA-AB-aMj"/>
                                                         <constraint firstItem="834-Da-bkJ" firstAttribute="top" secondItem="j57-Gw-nRL" secondAttribute="bottom" constant="2" id="XKP-wd-R3I"/>
                                                         <constraint firstItem="Ft9-C2-tgF" firstAttribute="leading" secondItem="PIP-cE-rVY" secondAttribute="leading" constant="8" id="YlL-5w-R1V"/>
@@ -1676,12 +1667,9 @@ on user experience design</string>
                                                         <constraint firstItem="834-Da-bkJ" firstAttribute="leading" secondItem="cVN-AO-Dyd" secondAttribute="trailing" constant="17" id="oWf-AG-4UU"/>
                                                         <constraint firstItem="834-Da-bkJ" firstAttribute="leading" secondItem="Ft9-C2-tgF" secondAttribute="trailing" constant="9" id="r7Q-9w-NKX"/>
                                                         <constraint firstItem="j57-Gw-nRL" firstAttribute="leading" secondItem="834-Da-bkJ" secondAttribute="leading" id="ttO-qz-apC"/>
-                                                        <constraint firstItem="ff6-a1-f55" firstAttribute="top" secondItem="Ft9-C2-tgF" secondAttribute="top" id="uoy-uO-dbz"/>
-                                                        <constraint firstItem="ff6-a1-f55" firstAttribute="top" secondItem="PIP-cE-rVY" secondAttribute="top" constant="5" id="yUX-f8-7Tu"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="gview" destination="ff6-a1-f55" id="JOY-aS-JBT"/>
                                                     <outlet property="heading" destination="RWA-k4-aQS" id="ZIZ-h5-thv"/>
                                                     <outlet property="imgname" destination="cVN-AO-Dyd" id="W2h-zJ-Z52"/>
                                                     <outlet property="imgv" destination="Ft9-C2-tgF" id="zRt-2x-gu8"/>
@@ -1693,7 +1681,7 @@ on user experience design</string>
                                                 <rect key="frame" x="0.0" y="165" width="375" height="18"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TOv-Bs-mYm" id="8RV-TV-268">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="17.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irn-gc-d2j">

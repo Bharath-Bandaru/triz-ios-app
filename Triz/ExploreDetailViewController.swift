@@ -73,7 +73,8 @@ class ExploreDetailViewController: UIViewController ,UICollectionViewDelegate,UI
         self.eheading.text = titl
         self.eplace.text =  venue
         self.edesc.text = desc
-        
+        let defaults = UserDefaults.standard
+        defaults.set("0",forKey : "flag")
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         let date = dateFormatter.date(from: self.sd) ?? Date()
@@ -129,6 +130,7 @@ class ExploreDetailViewController: UIViewController ,UICollectionViewDelegate,UI
         self.getSpe()
         // Do any additional setup after loading the view.
     }
+    
     override func viewDidLayoutSubviews() {
         DispatchQueue.main.async(execute: {() -> Void in
             self.ebuttonhome.titleLabel?.numberOfLines = 1
@@ -148,7 +150,11 @@ class ExploreDetailViewController: UIViewController ,UICollectionViewDelegate,UI
             self.escroll.contentSize.height =   self.dht.constant + self.mhght.constant  + height                //    self.escroll.contentSize = CGSize(width: CGFloat(0), height: CGFloat(self.view.layer.bounds.height + self.scollection.layer.bounds.height ))
         })
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated) // No need for semicolon
+    let defaults = UserDefaults.standard
+    defaults.set("0",forKey : "flag")
+    }
     func getSpe()
     {
         let parameters: Parameters = ["event_name": "DesignFirst"]

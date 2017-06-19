@@ -255,17 +255,19 @@ class scheduleViewController: UIViewController ,UITableViewDelegate,UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell : MatterTableViewCell  = tableView.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath) as! MatterTableViewCell
-        if self.flag == 0 {
-        if self.schedule_title[(indexPath as NSIndexPath).section] == "" {
-            cell.matter.textAlignment = .center
-            cell.matter.font = UIFont(name: "Avenir-Regular", size: 35.0)
-            cell.matter.font = UIFont.boldSystemFont(ofSize: 35)
-        }
-        if((indexPath as NSIndexPath).section == self.schedule_time.count-1){
-            cell.gview.isHidden = true
-            self.flag = 1
-        }
+        let defaults = UserDefaults.standard
         
+//        if defaults.string(forKey : "flag") == "0" {
+//        if self.schedule_title[(indexPath as NSIndexPath).section] == "" {
+//            cell.matter.textAlignment = .center
+//            cell.matter.font = UIFont(name: "Avenir-Regular", size: 30.0)
+//            cell.matter.font = UIFont.boldSystemFont(ofSize: 30)
+//        }
+//        if((indexPath as NSIndexPath).section == self.schedule_time.count-1){
+//            cell.gview.isHidden = true
+//            defaults.set("1",forKey : "flag")
+//        }
+//        
         //        if self.sc hedule_info[(indexPath as NSIndexPath).section + 1] != "" {
         //            self.schedule_time.remove(at: (indexPath as NSIndexPath).section + 1)
         //        }
@@ -280,7 +282,7 @@ class scheduleViewController: UIViewController ,UITableViewDelegate,UITableViewD
             cell.imgname?.text = self.schedule_sname[(indexPath as NSIndexPath).section]
             print("timmmm\(self.schedule_time)")
         
-        }
+//        }
         
         
         return cell

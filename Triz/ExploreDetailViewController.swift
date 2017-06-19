@@ -82,7 +82,7 @@ class ExploreDetailViewController: UIViewController ,UICollectionViewDelegate,UI
         
         print("dayyyy\(self.sd)\(date)")
         self.emonth.text = "\(date.monthMedium.uppercased())"
-        self.eday.text =  "\(day)" + "st\n" + date.dayOfWeek()!
+        self.eday.text =  "\(day)" + "\n" + date.dayOfWeek()!
         eimage.dropShadow(scale: true)
         buyBut.dropShadow(scale: true)
         ebuttonhome.dropShadow(scale: true)
@@ -138,7 +138,7 @@ class ExploreDetailViewController: UIViewController ,UICollectionViewDelegate,UI
             maskLayer.frame = self.detailview.bounds;
             maskLayer.path = path.cgPath
             self.detailview.layer.mask = maskLayer;
-
+            self.escroll.contentSize = CGSize(width: CGFloat(0), height: CGFloat(self.view.layer.bounds.height + self.scollection.layer.bounds.height + 540))
             
 //            let height = min(self.detailview.bounds.size.height, self.scollection.contentSize.height)
 //            //self.collht.constant = height

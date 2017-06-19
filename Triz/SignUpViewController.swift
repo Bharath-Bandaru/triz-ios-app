@@ -13,6 +13,7 @@ import CryptoSwift
 
 class SignUpViewController: UIViewController,UITextFieldDelegate {
     
+    @IBOutlet weak var viewone: UIView!
     @IBOutlet var signUpView: UIView!
     @IBOutlet weak var lastname: SkyFloatingLabelTextField!
     @IBOutlet weak var mobile: SkyFloatingLabelTextField!
@@ -21,6 +22,7 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var namw: SkyFloatingLabelTextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         lastname.selectedTitleColor = UIColor(rgbValue: 0xEC0070)
         lastname.selectedLineColor = UIColor(rgbValue: 0xEC0070)
         namw.selectedTitleColor = UIColor(rgbValue: 0xEC0070)
@@ -34,7 +36,8 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.dismissKeyboard))
         signUpView.addGestureRecognizer(tap)
         self.navigationController?.navigationBar.applyg(gradient: [UIColor(rgbValue :0xF02529) , UIColor(rgbValue :0xFF0D8D)])
-
+        NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
      //   NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         //NotificationCenter.default.addObserver(self, selector: #selector(SignUpViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         // Do any additional setup after loading the view.
@@ -50,24 +53,38 @@ class SignUpViewController: UIViewController,UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return true
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-                self.view.frame.origin.y -= keyboardSize.height
             
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height - 85
+            }
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
+        self.view.frame.origin.y = 0
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y = 0
+                self.view.frame.origin.y += keyboardSize.height - 85
             }
         }
     }
+    override func viewDidLayoutSubviews() {
+        DispatchQueue.main.async(execute: {() -> Void in
+            let path = UIBezierPath(roundedRect:self.viewone.bounds, byRoundingCorners:[.topLeft, .topRight], cornerRadii: CGSize(width :15, height : 15))
+            let maskLayer = CAShapeLayer()
+            maskLayer.frame = self.viewone.bounds;
+            maskLayer.path = path.cgPath
+            self.viewone.layer.mask = maskLayer;
+        })
+        
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+   
     @IBAction func LoginButAct(_ sender: Any) {
         self.performSegue(withIdentifier: "logins", sender: self)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

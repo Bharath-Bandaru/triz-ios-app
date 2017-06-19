@@ -56,6 +56,9 @@ class ExploreDetailViewController: UIViewController ,UICollectionViewDelegate,UI
     var speaker_about_arr = Array<String>()
     var speaker_talks_about_arr = Array<String>()
 
+    @IBOutlet weak var dht: NSLayoutConstraint!
+    @IBOutlet weak var cht: NSLayoutConstraint!
+    @IBOutlet weak var mhght: NSLayoutConstraint!
     @IBOutlet weak var mht: NSLayoutConstraint!
     @IBOutlet weak var detailview: UIView!
     @IBOutlet weak var scollection: UICollectionView!
@@ -140,12 +143,9 @@ class ExploreDetailViewController: UIViewController ,UICollectionViewDelegate,UI
             self.detailview.layer.mask = maskLayer;
             self.escroll.contentSize = CGSize(width: CGFloat(0), height: CGFloat(self.view.layer.bounds.height + self.scollection.layer.bounds.height + 540))
             
-//            let height = min(self.detailview.bounds.size.height, self.scollection.contentSize.height)
-//            //self.collht.constant = height
-//            self.view.layoutIfNeeded()
-//            self.escroll.contentSize.height =   self.detailview.layer.bounds.height + self.mht.constant
-
-                  //    self.escroll.contentSize = CGSize(width: CGFloat(0), height: CGFloat(self.view.layer.bounds.height + self.scollection.layer.bounds.height ))
+            let height = min(self.detailview.bounds.size.height, self.scollection.contentSize.height)
+            self.view.layoutIfNeeded()
+            self.escroll.contentSize.height =   self.dht.constant + self.mhght.constant  + height                //    self.escroll.contentSize = CGSize(width: CGFloat(0), height: CGFloat(self.view.layer.bounds.height + self.scollection.layer.bounds.height ))
         })
     }
 

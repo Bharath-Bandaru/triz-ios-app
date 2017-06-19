@@ -29,31 +29,31 @@ class scheduleViewController: UIViewController ,UITableViewDelegate,UITableViewD
     @IBOutlet weak var hostedbyO: UILabel!
     @IBOutlet weak var event_infoO: UILabel!
     @IBOutlet weak var event_imageO: UIImageView!
-
+    
     @IBOutlet weak var spscroll: UIView!
-
+    
     @IBOutlet weak var tasp: NSLayoutConstraint!
     @IBOutlet weak var scrollns: NSLayoutConstraint!
     @IBOutlet weak var topc: NSLayoutConstraint!
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     var heigt : CGFloat?
     
-//let purpleInspireColor = UIColor(red:0.13, green:0.03, blue:0.25, alpha:1.0)
+    //let purpleInspireColor = UIColor(red:0.13, green:0.03, blue:0.25, alpha:1.0)
     override func viewDidLoad() {
         super.viewDidLoad()
         self.automaticallyAdjustsScrollViewInsets = false;
-
-//        settings.style.buttonBarBackgroundColor = .white
-//        settings.style.buttonBarItemBackgroundColor = .white
-//        settings.style.selectedBarBackgroundColor = purpleInspireColor
-//        settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 14)
-//        settings.style.selectedBarHeight = 2.0
-//        settings.style.buttonBarMinimumLineSpacing = 0
-//        settings.style.buttonBarItemTitleColor = .black
-//        settings.style.buttonBarItemsShouldFillAvailiableWidth = true
-//        settings.style.buttonBarLeftContentInset = 0
-//        settings.style.buttonBarRightContentInset = 0
-      
+        
+        //        settings.style.buttonBarBackgroundColor = .white
+        //        settings.style.buttonBarItemBackgroundColor = .white
+        //        settings.style.selectedBarBackgroundColor = purpleInspireColor
+        //        settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 14)
+        //        settings.style.selectedBarHeight = 2.0
+        //        settings.style.buttonBarMinimumLineSpacing = 0
+        //        settings.style.buttonBarItemTitleColor = .black
+        //        settings.style.buttonBarItemsShouldFillAvailiableWidth = true
+        //        settings.style.buttonBarLeftContentInset = 0
+        //        settings.style.buttonBarRightContentInset = 0
+        
         event_infoO.text = self.event_title
         hostedbyO.text = self.hostedby
         print("urllll\(event_image)")
@@ -71,22 +71,22 @@ class scheduleViewController: UIViewController ,UITableViewDelegate,UITableViewD
         
         
         
-
-//        changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
-//            guard changeCurrentIndex == true else { return }
-//            oldCell?.label.textColor = .black
-//            newCell?.label.textColor = self?.purpleInspireColor
-//        }
-//
+        
+        //        changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
+        //            guard changeCurrentIndex == true else { return }
+        //            oldCell?.label.textColor = .black
+        //            newCell?.label.textColor = self?.purpleInspireColor
+        //        }
+        //
         // Do any additional setup after loading the view.
-     
-
-
+        
+        
+        
     }
     override func viewDidAppear(_ animated: Bool) {
-
+        
     }
-     override func viewDidLayoutSubviews() {
+    override func viewDidLayoutSubviews() {
         DispatchQueue.main.async(execute: {() -> Void in
             let path = UIBezierPath(roundedRect:self.wview.bounds, byRoundingCorners:[.topLeft, .topRight], cornerRadii: CGSize(width :15, height : 15))
             let maskLayer = CAShapeLayer()
@@ -100,13 +100,13 @@ class scheduleViewController: UIViewController ,UITableViewDelegate,UITableViewD
             self.heigt =  self.sscroll.contentSize.height
             
         })
-
+        
     }
     
-
+    
     func loadschedule( schedule_title : Array<String>,  schedule_info : Array<String>, schedule_time : Array<String>, schedule_image : Array<String>, schedule_hashtag : Array<String>, schedule_sname : Array<String>){
         
-       // var schedule_title = schedule_title
+        // var schedule_title = schedule_title
         self.schedule_title = schedule_title
         self.schedule_info = schedule_info
         self.schedule_time = schedule_time
@@ -114,17 +114,17 @@ class scheduleViewController: UIViewController ,UITableViewDelegate,UITableViewD
         self.schedule_hashtag = schedule_hashtag
         self.schedule_sname = schedule_sname
     }
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//               navigationController?.hidesBarsOnSwipe = true
-//
-//    }
+    //    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    //               navigationController?.hidesBarsOnSwipe = true
+    //
+    //    }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let yOffset = scrollView.contentOffset.y
-//        if yOffset == self.heigt{
-//            self.sscroll.isScrollEnabled = false
-//            self.stable.isScrollEnabled = true
-//        }
-//        print("yoff\(yOffset)")
+        //        if yOffset == self.heigt{
+        //            self.sscroll.isScrollEnabled = false
+        //            self.stable.isScrollEnabled = true
+        //        }
+        //        print("yoff\(yOffset)")
         var fadeTextAnimation = CATransition()
         fadeTextAnimation.duration = 0.5
         fadeTextAnimation.type = kCATransitionFade
@@ -132,13 +132,12 @@ class scheduleViewController: UIViewController ,UITableViewDelegate,UITableViewD
             if yOffset >= self.topc.constant {
                 self.sscroll.isScrollEnabled = false
                 self.stable.isScrollEnabled = true
-                UIView.animate(withDuration: 2.0, animations: {
-                 
+                
                     self.navigationController?.navigationBar.layer.add(fadeTextAnimation, forKey: "DesignFirst")
                     self.navigationItem.title = "DesignFirst";
                     
                     
-                })
+                
             }
         }
         
@@ -155,68 +154,68 @@ class scheduleViewController: UIViewController ,UITableViewDelegate,UITableViewD
             }
         }
     }
-//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        let yOffset = scrollView.contentOffset.y
-//        if yOffset == self.heigt{
-//            self.sscroll.isScrollEnabled = false
-//            self.stable.isScrollEnabled = true
-//        }
-//        print("yoff\(yOffset)")
-//    }
-//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        let translation: CGPoint = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
-//        var fadeTextAnimation = CATransition()
-//        fadeTextAnimation.duration = 0.5
-//        fadeTextAnimation.type = kCATransitionFade
-//    
-//        if translation.y > 0 {
-//            // react to dragging down
-//            UIView.animate(withDuration: 1.0, animations: {
-//                self.sscroll.contentOffset = CGPoint(x: 0, y: 0)
-//                self.navigationController?.navigationBar.layer.add(fadeTextAnimation, forKey: "")
-//                self.navigationItem.title = "";
-//
-//
-//            })
-//                       print()
-//        }
-//        else {
-//            UIView.animate(withDuration: 2.0, animations: {
-//                self.sscroll.contentOffset = CGPoint(x: 0, y: self.spscroll.layer.bounds.height)
-//                self.navigationController?.navigationBar.layer.add(fadeTextAnimation, forKey: "DesignFirst")
-//                self.navigationItem.title = "DesignFirst";
-//
-//                
-//            })
-//                  }
-//    }
-//
-  
-   override func didReceiveMemoryWarning() {
+    //    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    //        let yOffset = scrollView.contentOffset.y
+    //        if yOffset == self.heigt{
+    //            self.sscroll.isScrollEnabled = false
+    //            self.stable.isScrollEnabled = true
+    //        }
+    //        print("yoff\(yOffset)")
+    //    }
+    //    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    //        let translation: CGPoint = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
+    //        var fadeTextAnimation = CATransition()
+    //        fadeTextAnimation.duration = 0.5
+    //        fadeTextAnimation.type = kCATransitionFade
+    //
+    //        if translation.y > 0 {
+    //            // react to dragging down
+    //            UIView.animate(withDuration: 1.0, animations: {
+    //                self.sscroll.contentOffset = CGPoint(x: 0, y: 0)
+    //                self.navigationController?.navigationBar.layer.add(fadeTextAnimation, forKey: "")
+    //                self.navigationItem.title = "";
+    //
+    //
+    //            })
+    //                       print()
+    //        }
+    //        else {
+    //            UIView.animate(withDuration: 2.0, animations: {
+    //                self.sscroll.contentOffset = CGPoint(x: 0, y: self.spscroll.layer.bounds.height)
+    //                self.navigationController?.navigationBar.layer.add(fadeTextAnimation, forKey: "DesignFirst")
+    //                self.navigationItem.title = "DesignFirst";
+    //
+    //
+    //            })
+    //                  }
+    //    }
+    //
+    
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-//     override  func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-//   
-//        let df = scheduleTableViewController(style: .plain, itemInfo: "Table View",date: event_date,schedule_time: schedule_time,schedule_title: schedule_title,schedule_info: schedule_info,schedule_speaker: schedule_sname,schedule_hashtag: schedule_hashtag,schedule_image: schedule_image)
-//
-//            return [df]
-//        }
-
+    //     override  func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
+    //
+    //        let df = scheduleTableViewController(style: .plain, itemInfo: "Table View",date: event_date,schedule_time: schedule_time,schedule_title: schedule_title,schedule_info: schedule_info,schedule_speaker: schedule_sname,schedule_hashtag: schedule_hashtag,schedule_image: schedule_image)
+    //
+    //            return [df]
+    //        }
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
     
     
     
-     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         
         
         //        if imagenames[(indexPath as NSIndexPath).section]  == ""
@@ -236,7 +235,7 @@ class scheduleViewController: UIViewController ,UITableViewDelegate,UITableViewD
     
     // MARK: - Table view data source
     
-     func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // 1
         // Return the number of sections.
         print("stimeee\(self.schedule_time.count)")
@@ -244,19 +243,20 @@ class scheduleViewController: UIViewController ,UITableViewDelegate,UITableViewD
         
         
     }
-     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100.0
     }
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // 2
         return 1
         
     }
     
     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : MatterTableViewCell  = tableView.dequeueReusableCell(withIdentifier: "MainCell", for: indexPath) as! MatterTableViewCell
-    
+        
+        
         cell.heading?.text = self.schedule_title[(indexPath as NSIndexPath).section]
         cell.matter?.text = self.schedule_info[(indexPath as NSIndexPath).section]
         cell.roomno?.text = self.schedule_hashtag[(indexPath as NSIndexPath).section]
@@ -264,21 +264,109 @@ class scheduleViewController: UIViewController ,UITableViewDelegate,UITableViewD
         cell.imgv.sd_setImage(with: URL(string : ur))
         cell.imgname?.text = self.schedule_sname[(indexPath as NSIndexPath).section]
         print("timmmm\(self.schedule_time)")
-        
-        
+        //        if self.sc hedule_info[(indexPath as NSIndexPath).section + 1] != "" {
+        //            self.schedule_time.remove(at: (indexPath as NSIndexPath).section + 1)
+        //        }
+        //        else{
+        //
+        //        }
         
         
         return cell
+        
+        
     }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let  headerCell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell") as! CustomHeaderCell
-  
-            headerCell.headerLabel.text = self.schedule_time[section];
-   
+        
+        headerCell.headerLabel.text = self.schedule_time[section];
+        
         
         return headerCell
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30.0    }
-
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        
+        if section < self.schedule_time.count - 2{
+            if self.schedule_info[section+1] == ""
+            {
+                print("one")
+                return 40.0
+            }
+            else {
+                print("zero")
+                
+                return 0
+            }
+            
+        }
+        else {
+            print("zero")
+            
+            return 0
+        }
+        
+        
+        
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 35))
+        
+        
+        footerView.backgroundColor = UIColor(rgbValue : 0xFF0D8D)
+        
+        let version = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        version.font = version.font.withSize(15)
+        version.textColor = UIColor.white
+        version.center = CGPoint(x: footerView.bounds.size.width - 50, y: 20)
+        version.translatesAutoresizingMaskIntoConstraints = true
+        footerView.addSubview(version)
+        let version1 = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        version1.font = version.font.withSize(15)
+        version1.textColor = UIColor.white
+        version1.center = CGPoint(x :110, y: 20)
+        version1.translatesAutoresizingMaskIntoConstraints = true
+        footerView.addSubview(version1)
+        
+        
+        //        let footerView1 = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
+        //
+        //
+        //        footerView1.backgroundColor = UIColorFromRGB(0x4D3291)
+        //
+        //        let version2 = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        //        version2.font = version2.font.withSize(15)
+        //        version2.textColor = UIColor.white
+        //        version2.center = CGPoint(x: footerView1.bounds.size.width - 50, y: 20)
+        //        version2.translatesAutoresizingMaskIntoConstraints = true
+        //        footerView1.addSubview(version2)
+        //        let version3 = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        //        version3.font = version.font.withSize(15)
+        //        version3.textColor = UIColor.white
+        //        version3.center = CGPoint(x :110, y: 20)
+        //        version3.translatesAutoresizingMaskIntoConstraints = true
+        //        footerView1.addSubview(version3)
+        
+        if self.schedule_title[section+1] == "Coffee Break"
+        {
+            version.text = self.schedule_time[section+1]
+            version1.text = self.schedule_title[section+1]
+            
+        }
+        else     if self.schedule_title[section+1] == "Lunch Break"
+        {
+            version.text = self.schedule_time[section+1]
+            version1.text = self.schedule_title[section+1]
+            
+        }
+        else {
+            print("zero")
+            
+        }
+        return footerView
+        
+    }
+    
 }
